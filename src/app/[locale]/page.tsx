@@ -22,13 +22,13 @@ export default async function HomePage({ params }: Props) {
     <>
       <Hero />
       <SectionDivider />
+      <AirplaneJourney />
+      <SectionDivider />
       <VideoIntro />
       <SectionDivider />
       <PhotoGallery />
       <SectionDivider />
       <About />
-      <SectionDivider />
-      <AirplaneJourney />
       <SectionDivider />
       <Skills />
       <SectionDivider />
