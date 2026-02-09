@@ -12,6 +12,9 @@ import {
   AdditiveBlending,
   Fog,
   TextureLoader,
+  SRGBColorSpace,
+  DoubleSide,
+  LinearFilter,
   type Texture,
   type Group,
   type MeshBasicMaterial,
@@ -19,37 +22,37 @@ import {
 } from "three";
 import useCSSVariables from "../AirplaneJourney/useCSSVariables";
 import type { ThemeColors } from "../AirplaneJourney/useCSSVariables";
+import type { GalleryItemData } from "./index";
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
 /* ------------------------------------------------------------------ */
 
-type PhotoData = {
-  src: string;
-  alt: string;
-  caption: string;
-  location: string;
-};
-
 type Props = {
-  photos: PhotoData[];
+  items: GalleryItemData[];
   progressRef: RefObject<number>;
 };
 
 /* ------------------------------------------------------------------ */
-/*  Layout constants                                                   */
+/*  Layout constants — 6 items                                         */
 /* ------------------------------------------------------------------ */
 
 const PHOTO_POSITIONS: [number, number, number][] = [
   [2.2, 0.3, -5],
   [-2, -0.4, -14],
   [1.8, 0.6, -23],
+  [-1.5, -0.2, -32],
+  [2, 0.4, -41],
+  [-1.8, -0.3, -50],
 ];
 
 const PHOTO_ROTATIONS: [number, number, number][] = [
   [0, -0.15, 0.02],
   [0, 0.18, -0.03],
   [0, -0.12, 0.04],
+  [0, 0.14, -0.02],
+  [0, -0.16, 0.03],
+  [0, 0.13, -0.02],
 ];
 
 const cameraCurve = new CatmullRomCurve3(
@@ -61,7 +64,13 @@ const cameraCurve = new CatmullRomCurve3(
     new Vector3(-1.5, -0.3, -14),
     new Vector3(0, 0.15, -18.5),
     new Vector3(1.3, 0.45, -23),
-    new Vector3(0, 0, -27),
+    new Vector3(0, 0.05, -27.5),
+    new Vector3(-1, -0.1, -32),
+    new Vector3(0, 0.15, -36.5),
+    new Vector3(1.5, 0.3, -41),
+    new Vector3(0, 0, -45.5),
+    new Vector3(-1.2, -0.2, -50),
+    new Vector3(0, 0, -54),
   ],
   false,
   "catmullrom",
@@ -74,24 +83,31 @@ const cameraCurve = new CatmullRomCurve3(
 
 function useOptionalTexture(url: string): Texture | null {
   const [texture, setTexture] = useState<Texture | null>(null);
+  const gl = useThree((s) => s.gl);
 
   useEffect(() => {
     let disposed = false;
     new TextureLoader().load(
       url,
       (tex) => {
+        tex.colorSpace = SRGBColorSpace;
+        tex.minFilter = LinearFilter;
+        tex.generateMipmaps = true;
+        tex.anisotropy = gl.capabilities.getMaxAnisotropy();
+        tex.needsUpdate = true;
         if (!disposed) setTexture(tex);
         else tex.dispose();
       },
       undefined,
-      () => {
+      (err) => {
+        console.warn("Failed to load gallery texture:", url, err);
         if (!disposed) setTexture(null);
       },
     );
     return () => {
       disposed = true;
     };
-  }, [url]);
+  }, [url, gl]);
 
   return texture;
 }
@@ -126,11 +142,11 @@ function CameraRig({ progressRef }: { progressRef: RefObject<number> }) {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Photo frame                                                        */
+/*  Video frame — renders video in Html portal                         */
 /* ------------------------------------------------------------------ */
 
-function PhotoFrame({
-  photo,
+function VideoFrame({
+  item,
   position,
   rotation,
   index,
@@ -138,7 +154,146 @@ function PhotoFrame({
   progressRef,
   colors,
 }: {
-  photo: PhotoData;
+  item: GalleryItemData;
+  position: [number, number, number];
+  rotation: [number, number, number];
+  index: number;
+  total: number;
+  progressRef: RefObject<number>;
+  colors: ThemeColors;
+}) {
+  const groupRef = useRef<Group>(null);
+  const glowRef = useRef<MeshBasicMaterial>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const wasPlaying = useRef(false);
+
+  const progressTarget = (index + 1) / (total + 1);
+
+  useFrame(() => {
+    const p = progressRef.current ?? 0;
+    const dist = Math.abs(p - progressTarget);
+    const proximity = dist < 0.1 ? 1 - (dist / 0.1) ** 2 : 0;
+
+    if (groupRef.current) {
+      const s = 1 + proximity * 0.06;
+      groupRef.current.scale.set(s, s, s);
+    }
+
+    if (glowRef.current) {
+      glowRef.current.opacity = 0.04 + proximity * 0.25;
+    }
+
+    if (contentRef.current) {
+      contentRef.current.style.opacity = String(Math.max(proximity, 0.3));
+    }
+
+    // Auto-play/pause video based on proximity
+    if (videoRef.current) {
+      if (proximity > 0.3 && !wasPlaying.current) {
+        videoRef.current.play().catch(() => {});
+        wasPlaying.current = true;
+      } else if (proximity <= 0.1 && wasPlaying.current) {
+        videoRef.current.pause();
+        wasPlaying.current = false;
+      }
+    }
+  });
+
+  return (
+    <group ref={groupRef} position={position} rotation={rotation}>
+      {/* Outer glow */}
+      <mesh position={[0, 0, -0.04]}>
+        <planeGeometry args={[3.9, 2.6]} />
+        <meshBasicMaterial
+          ref={glowRef}
+          color={colors.gradientFrom}
+          transparent
+          opacity={0.04}
+          blending={AdditiveBlending}
+        />
+      </mesh>
+
+      {/* Video via Html */}
+      <Html
+        center
+        transform
+        scale={0.22}
+        style={{ pointerEvents: "none" }}
+      >
+        <div
+          ref={contentRef}
+          style={{ opacity: 0.3, transition: "none" }}
+        >
+          <video
+            ref={videoRef}
+            src={item.src}
+            muted
+            loop
+            playsInline
+            style={{
+              width: "560px",
+              height: "350px",
+              objectFit: "cover",
+              borderRadius: "4px",
+              display: "block",
+            }}
+          />
+          <div style={{ textAlign: "center", marginTop: "8px" }}>
+            <p
+              style={{
+                fontSize: "15px",
+                fontWeight: 600,
+                margin: 0,
+                color: colors.foreground,
+                textShadow: `0 0 20px ${colors.background}`,
+              }}
+            >
+              {item.caption}
+            </p>
+            <p
+              style={{
+                fontSize: "12px",
+                margin: "4px 0 0",
+                color: colors.foreground,
+                opacity: 0.6,
+                textShadow: `0 0 20px ${colors.background}`,
+              }}
+            >
+              {item.location}
+            </p>
+          </div>
+        </div>
+      </Html>
+
+      {/* Wireframe border */}
+      <mesh position={[0, 0, 0.01]}>
+        <planeGeometry args={[3.6, 2.3]} />
+        <meshBasicMaterial
+          color={colors.isDark ? colors.gradientVia : colors.primary}
+          transparent
+          opacity={colors.isDark ? 0.12 : 0.2}
+          wireframe
+        />
+      </mesh>
+    </group>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Photo frame                                                        */
+/* ------------------------------------------------------------------ */
+
+function PhotoFrame({
+  item,
+  position,
+  rotation,
+  index,
+  total,
+  progressRef,
+  colors,
+}: {
+  item: GalleryItemData;
   position: [number, number, number];
   rotation: [number, number, number];
   index: number;
@@ -149,7 +304,7 @@ function PhotoFrame({
   const groupRef = useRef<Group>(null);
   const glowRef = useRef<MeshBasicMaterial>(null);
   const captionRef = useRef<HTMLDivElement>(null);
-  const texture = useOptionalTexture(photo.src);
+  const texture = useOptionalTexture(item.src);
 
   const progressTarget = (index + 1) / (total + 1);
 
@@ -189,25 +344,28 @@ function PhotoFrame({
       {/* Photo or placeholder */}
       <mesh>
         <planeGeometry args={[3.5, 2.2]} />
-        {texture ? (
-          <meshBasicMaterial map={texture} transparent />
-        ) : (
-          <meshBasicMaterial color={colors.primary} transparent opacity={0.15} />
-        )}
+        <meshBasicMaterial
+          map={texture}
+          color={texture ? "#ffffff" : colors.primary}
+          transparent
+          opacity={texture ? 1 : 0.15}
+          toneMapped={false}
+          side={DoubleSide}
+        />
       </mesh>
 
       {/* Wireframe border */}
       <mesh position={[0, 0, 0.01]}>
         <planeGeometry args={[3.6, 2.3]} />
         <meshBasicMaterial
-          color={colors.gradientVia}
+          color={colors.isDark ? colors.gradientVia : colors.primary}
           transparent
-          opacity={0.12}
+          opacity={colors.isDark ? 0.12 : 0.2}
           wireframe
         />
       </mesh>
 
-      {/* Caption (DOM via Html portal) */}
+      {/* Caption */}
       <Html
         position={[0, -1.6, 0.1]}
         center
@@ -226,7 +384,7 @@ function PhotoFrame({
               textShadow: `0 0 20px ${colors.background}`,
             }}
           >
-            {photo.caption}
+            {item.caption}
           </p>
           <p
             style={{
@@ -237,7 +395,7 @@ function PhotoFrame({
               textShadow: `0 0 20px ${colors.background}`,
             }}
           >
-            {photo.location}
+            {item.location}
           </p>
         </div>
       </Html>
@@ -277,9 +435,9 @@ function ConstellationLines({ colors }: { colors: ThemeColors }) {
     <group>
       <lineSegments geometry={lineGeo}>
         <lineBasicMaterial
-          color={colors.gradientVia}
+          color={colors.isDark ? colors.gradientVia : colors.primary}
           transparent
-          opacity={0.2}
+          opacity={colors.isDark ? 0.2 : 0.15}
         />
       </lineSegments>
 
@@ -287,9 +445,9 @@ function ConstellationLines({ colors }: { colors: ThemeColors }) {
         <mesh key={i} position={pos}>
           <sphereGeometry args={[0.03, 8, 8]} />
           <meshBasicMaterial
-            color={colors.gradientVia}
+            color={colors.isDark ? colors.gradientVia : colors.primary}
             transparent
-            opacity={0.4}
+            opacity={colors.isDark ? 0.4 : 0.3}
           />
         </mesh>
       ))}
@@ -315,7 +473,7 @@ function ConstellationDots({ colors }: { colors: ThemeColors }) {
             <meshBasicMaterial
               color={colors.gradientFrom}
               transparent
-              opacity={0.3}
+              opacity={colors.isDark ? 0.3 : 0.15}
               blending={AdditiveBlending}
             />
           </mesh>
@@ -363,7 +521,7 @@ function TravelingLights({ colors }: { colors: ThemeColors }) {
             <meshBasicMaterial
               color={colors.gradientFrom}
               transparent
-              opacity={0.8}
+              opacity={colors.isDark ? 0.8 : 0.5}
               blending={AdditiveBlending}
             />
           </mesh>
@@ -379,14 +537,14 @@ function TravelingLights({ colors }: { colors: ThemeColors }) {
 
 function StarField({ colors }: { colors: ThemeColors }) {
   const ref = useRef<PointsType>(null);
-  const count = colors.isDark ? 400 : 200;
+  const count = colors.isDark ? 500 : 150;
 
   const geometry = useMemo(() => {
     const positions = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
       positions[i * 3] = (Math.random() - 0.5) * 30;
       positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
-      positions[i * 3 + 2] = Math.random() * -45 + 10;
+      positions[i * 3 + 2] = Math.random() * -60 + 10;
     }
     const geo = new BufferGeometry();
     geo.setAttribute("position", new Float32BufferAttribute(positions, 3));
@@ -400,10 +558,10 @@ function StarField({ colors }: { colors: ThemeColors }) {
   return (
     <points ref={ref} geometry={geometry}>
       <pointsMaterial
-        color={colors.gradientVia}
-        size={0.05}
+        color={colors.isDark ? colors.gradientVia : colors.primary}
+        size={colors.isDark ? 0.05 : 0.035}
         transparent
-        opacity={colors.isDark ? 0.6 : 0.3}
+        opacity={colors.isDark ? 0.6 : 0.2}
         sizeAttenuation
         blending={AdditiveBlending}
       />
@@ -412,38 +570,7 @@ function StarField({ colors }: { colors: ThemeColors }) {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Nebulae (soft background glows)                                    */
-/* ------------------------------------------------------------------ */
-
-function Nebulae({ colors }: { colors: ThemeColors }) {
-  const configs = useMemo(
-    () => [
-      { pos: [5, 3, -10] as const, scale: 4, color: colors.gradientFrom },
-      { pos: [-6, -2, -20] as const, scale: 5, color: colors.gradientVia },
-      { pos: [3, -4, -30] as const, scale: 3.5, color: colors.gradientTo },
-    ],
-    [colors.gradientFrom, colors.gradientVia, colors.gradientTo],
-  );
-
-  return (
-    <group>
-      {configs.map((cfg, i) => (
-        <mesh key={i} position={cfg.pos} scale={cfg.scale}>
-          <sphereGeometry args={[1, 16, 16]} />
-          <meshBasicMaterial
-            color={cfg.color}
-            transparent
-            opacity={0.03}
-            blending={AdditiveBlending}
-          />
-        </mesh>
-      ))}
-    </group>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  Environment (fog + lights)                                         */
+/*  Environment (fog + lights + opaque background)                     */
 /* ------------------------------------------------------------------ */
 
 function GalleryEnvironment({ colors }: { colors: ThemeColors }) {
@@ -454,9 +581,10 @@ function GalleryEnvironment({ colors }: { colors: ThemeColors }) {
 
   return (
     <>
+      <color attach="background" args={[fogColor]} />
       <fog attach="fog" args={[fogColor, 10, 35]} />
-      <ambientLight intensity={colors.isDark ? 0.3 : 0.6} />
-      <directionalLight position={[5, 10, 5]} intensity={colors.isDark ? 0.5 : 0.8} />
+      <ambientLight intensity={colors.isDark ? 0.3 : 0.7} />
+      <directionalLight position={[5, 10, 5]} intensity={colors.isDark ? 0.5 : 0.9} />
       <directionalLight
         position={[-5, 5, -10]}
         intensity={0.2}
@@ -470,36 +598,49 @@ function GalleryEnvironment({ colors }: { colors: ThemeColors }) {
 /*  Main scene                                                         */
 /* ------------------------------------------------------------------ */
 
-export default function GalleryScene({ photos, progressRef }: Props) {
+export default function GalleryScene({ items, progressRef }: Props) {
   const colors = useCSSVariables();
 
   return (
     <Canvas
       camera={{ position: [0, 0, 6], fov: 50 }}
-      dpr={[1, 1.5]}
-      gl={{ antialias: true, alpha: true }}
-      style={{ background: "transparent" }}
+      dpr={[1, 2]}
+      gl={{ antialias: true }}
+      style={{ background: colors.background }}
     >
       <CameraRig progressRef={progressRef} />
       <GalleryEnvironment colors={colors} />
       <ConstellationLines colors={colors} />
-      <ConstellationDots colors={colors} />
-      <TravelingLights colors={colors} />
       <StarField colors={colors} />
-      <Nebulae colors={colors} />
 
-      {photos.map((photo, i) => (
-        <PhotoFrame
-          key={photo.src}
-          photo={photo}
-          position={PHOTO_POSITIONS[i] ?? PHOTO_POSITIONS[i % PHOTO_POSITIONS.length]}
-          rotation={PHOTO_ROTATIONS[i] ?? PHOTO_ROTATIONS[i % PHOTO_ROTATIONS.length]}
-          index={i}
-          total={photos.length}
-          progressRef={progressRef}
-          colors={colors}
-        />
-      ))}
+      {items.map((item, i) => {
+        const position = PHOTO_POSITIONS[i] ?? PHOTO_POSITIONS[i % PHOTO_POSITIONS.length];
+        const rotation = PHOTO_ROTATIONS[i] ?? PHOTO_ROTATIONS[i % PHOTO_ROTATIONS.length];
+
+        return item.type === "video" ? (
+          <VideoFrame
+            key={item.src}
+            item={item}
+            position={position}
+            rotation={rotation}
+            index={i}
+            total={items.length}
+            progressRef={progressRef}
+            colors={colors}
+          />
+        ) : (
+          <PhotoFrame
+            key={item.src}
+            item={item}
+            position={position}
+            rotation={rotation}
+            index={i}
+            total={items.length}
+            progressRef={progressRef}
+            colors={colors}
+          />
+        );
+      })}
     </Canvas>
   );
 }

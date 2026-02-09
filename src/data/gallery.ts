@@ -1,10 +1,14 @@
-export type GalleryImage = {
+export type GalleryItem = {
   id: string;
   src: string;
+  type: "image" | "video";
 };
 
-export const galleryImages: GalleryImage[] = [
-  { id: "dubai-1", src: "/images/gallery/grupo-1.jpg" },
-  { id: "dubai-2", src: "/images/gallery/eu-burj.jpeg" },
-  { id: "dubai-3", src: "/images/gallery/grupo-2.jpeg" },
+export const galleryItems: GalleryItem[] = [
+  { id: "burj-selfie", src: "/images/gallery/eu-na-frente-do-burj.jpeg", type: "image" },
+  { id: "marina-wheel", src: "/images/gallery/eu-em-marina-no-claw-na-frente-da-roda-gigante.jpeg", type: "image" },
+  { id: "burj-video", src: "/images/gallery/video-mostrando-o-burj.mp4", type: "video" },
+  { id: "dubai-1", src: "/images/gallery/grupo-1.jpg", type: "image" },
+  { id: "dubai-2", src: "/images/gallery/eu-burj.jpeg", type: "image" },
+  { id: "dubai-3", src: "/images/gallery/grupo-2.jpeg", type: "image" },
 ];

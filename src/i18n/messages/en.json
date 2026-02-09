@@ -35,6 +35,21 @@
     "subtitle": "Moments from my international journey",
     "scroll_hint": "Scroll to navigate the constellation",
     "items": {
+      "burj-selfie": {
+        "alt": "In front of Burj Khalifa",
+        "caption": "Burj Khalifa",
+        "location": "Dubai, UAE"
+      },
+      "marina-wheel": {
+        "alt": "Dubai Marina ferris wheel",
+        "caption": "Ain Dubai",
+        "location": "Dubai Marina, UAE"
+      },
+      "burj-video": {
+        "alt": "Burj Khalifa view",
+        "caption": "Burj Khalifa View",
+        "location": "Dubai, UAE"
+      },
       "dubai-1": {
         "alt": "Dubai skyline",
         "caption": "Office in Dubai",

@@ -35,6 +35,21 @@
     "subtitle": "Momentos da minha jornada internacional",
     "scroll_hint": "Role para navegar pela constelação",
     "items": {
+      "burj-selfie": {
+        "alt": "Na frente do Burj Khalifa",
+        "caption": "Burj Khalifa",
+        "location": "Dubai, UAE"
+      },
+      "marina-wheel": {
+        "alt": "Roda-gigante Dubai Marina",
+        "caption": "Ain Dubai",
+        "location": "Dubai Marina, UAE"
+      },
+      "burj-video": {
+        "alt": "Vista do Burj Khalifa",
+        "caption": "Vista do Burj Khalifa",
+        "location": "Dubai, UAE"
+      },
       "dubai-1": {
         "alt": "Dubai skyline",
         "caption": "Escritório em Dubai",

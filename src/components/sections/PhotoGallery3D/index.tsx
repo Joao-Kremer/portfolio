@@ -3,23 +3,24 @@
 import { useRef, useState, useEffect, type ComponentType } from "react";
 import useFlightProgress from "../AirplaneJourney/useFlightProgress";
 
-type PhotoData = {
+export type GalleryItemData = {
   src: string;
+  type: "image" | "video";
   alt: string;
   caption: string;
   location: string;
 };
 
 type SceneProps = {
-  photos: PhotoData[];
+  items: GalleryItemData[];
   progressRef: React.RefObject<number>;
 };
 
 type Props = {
-  photos: PhotoData[];
+  items: GalleryItemData[];
 };
 
-export default function PhotoGallery3D({ photos }: Props) {
+export default function PhotoGallery3D({ items }: Props) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const progressRef = useFlightProgress(scrollContainerRef);
   const [Scene, setScene] = useState<ComponentType<SceneProps> | null>(null);
@@ -34,10 +35,10 @@ export default function PhotoGallery3D({ photos }: Props) {
     <div
       ref={scrollContainerRef}
       className="relative"
-      style={{ height: "350vh" }}
+      style={{ height: "600vh" }}
     >
       <div className="sticky top-0 h-screen w-full">
-        {Scene && <Scene photos={photos} progressRef={progressRef} />}
+        {Scene && <Scene items={items} progressRef={progressRef} />}
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none">
