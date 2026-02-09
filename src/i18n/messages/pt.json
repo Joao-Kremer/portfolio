@@ -33,6 +33,7 @@
   "gallery": {
     "heading": "Pelo Mundo",
     "subtitle": "Momentos da minha jornada internacional",
+    "scroll_hint": "Role para navegar pela constelação",
     "items": {
       "dubai-1": {
         "alt": "Dubai skyline",

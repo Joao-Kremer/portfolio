@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import SectionHeading from "@/components/ui/SectionHeading";
-import PhotoCarousel from "@/components/ui/PhotoCarousel";
+import PhotoGallery3D from "@/components/sections/PhotoGallery3D";
 import { galleryImages } from "@/data/gallery";
 
 export default function PhotoGallery() {
@@ -17,16 +17,17 @@ export default function PhotoGallery() {
   }));
 
   return (
-    <section className="py-24 px-4">
-      <div className="mx-auto max-w-6xl">
-        <AnimatedSection>
+    <section id="gallery">
+      <AnimatedSection>
+        <div className="px-4 pt-24">
           <SectionHeading title={t("heading")} subtitle={t("subtitle")} />
-        </AnimatedSection>
+          <p className="mx-auto -mt-6 mb-8 max-w-md text-center text-sm text-muted-foreground/60">
+            {t("scroll_hint")}
+          </p>
+        </div>
+      </AnimatedSection>
 
-        <AnimatedSection delay={0.2}>
-          <PhotoCarousel images={translatedImages} />
-        </AnimatedSection>
-      </div>
+      <PhotoGallery3D photos={translatedImages} />
     </section>
   );
 }

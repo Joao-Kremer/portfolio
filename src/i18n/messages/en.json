@@ -33,6 +33,7 @@
   "gallery": {
     "heading": "Around the World",
     "subtitle": "Moments from my international journey",
+    "scroll_hint": "Scroll to navigate the constellation",
     "items": {
       "dubai-1": {
         "alt": "Dubai skyline",
