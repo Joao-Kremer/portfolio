@@ -44,14 +44,12 @@ const PHOTO_POSITIONS: [number, number, number][] = [
   [2.2, 0.3, -5],
   [-2, -0.4, -14],
   [1.8, 0.6, -23],
-  [-1.5, -0.2, -32],
 ];
 
 const PHOTO_ROTATIONS: [number, number, number][] = [
   [0, -0.15, 0.02],
   [0, 0.18, -0.03],
   [0, -0.12, 0.04],
-  [0, 0.14, -0.02],
 ];
 
 const cameraCurve = new CatmullRomCurve3(
@@ -63,9 +61,7 @@ const cameraCurve = new CatmullRomCurve3(
     new Vector3(-1.5, -0.3, -14),
     new Vector3(0, 0.15, -18.5),
     new Vector3(1.3, 0.45, -23),
-    new Vector3(0, 0.05, -27.5),
-    new Vector3(-1, -0.1, -32),
-    new Vector3(0, 0, -36),
+    new Vector3(0, 0, -27),
   ],
   false,
   "catmullrom",

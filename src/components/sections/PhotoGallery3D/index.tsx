@@ -34,7 +34,7 @@ export default function PhotoGallery3D({ photos }: Props) {
     <div
       ref={scrollContainerRef}
       className="relative"
-      style={{ height: "400vh" }}
+      style={{ height: "350vh" }}
     >
       <div className="sticky top-0 h-screen w-full">
         {Scene && <Scene photos={photos} progressRef={progressRef} />}
