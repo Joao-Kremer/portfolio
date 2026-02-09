@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { ArrowDown, Eye } from "lucide-react";
 import { cn } from "@/lib/utils";
+import HeroGlobe from "@/components/sections/HeroGlobe";
 
 const container = {
   hidden: { opacity: 0 },
@@ -34,41 +35,14 @@ export default function Hero() {
       {/* Dot grid pattern */}
       <div className="pointer-events-none absolute inset-0 dot-grid" />
 
-      {/* Animated background orbs */}
-      <div className="pointer-events-none absolute inset-0">
-        <motion.div
-          animate={{
-            x: [0, 30, -20, 0],
-            y: [0, -40, 20, 0],
-            scale: [1, 1.1, 0.95, 1],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-primary/20 blur-[120px]"
-        />
-        <motion.div
-          animate={{
-            x: [0, -40, 30, 0],
-            y: [0, 30, -30, 0],
-            scale: [1, 0.9, 1.1, 1],
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute -right-40 top-1/4 h-[400px] w-[400px] rounded-full bg-primary/15 blur-[100px]"
-        />
-        <motion.div
-          animate={{
-            x: [0, 20, -30, 0],
-            y: [0, -20, 40, 0],
-          }}
-          transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-0 left-1/3 h-[350px] w-[350px] rounded-full bg-primary/10 blur-[100px]"
-        />
-      </div>
+      {/* 3D Globe background */}
+      <HeroGlobe />
 
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 mx-auto max-w-4xl text-center"
+        className="relative z-10 mx-auto max-w-4xl text-center select-none"
       >
         <motion.p
           variants={item}
