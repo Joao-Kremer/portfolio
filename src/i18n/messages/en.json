@@ -1,0 +1,195 @@
+{
+  "meta": {
+    "title": "João Vitor Melo Kremer | Full Stack Developer",
+    "description": "Full Stack Developer with international experience. From Brazil to Dubai in 11 months. Specialist in React, Node.js, and TypeScript."
+  },
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact",
+    "preview_about": "Learn about my journey from Brazil to Dubai and what drives me as a developer.",
+    "preview_skills": "The technologies and tools I master: React, Node.js, TypeScript and more.",
+    "preview_projects": "Projects I've built — from concept to deploy, with code and live demos.",
+    "preview_experience": "My professional journey and the companies I've worked at.",
+    "preview_contact": "Let's talk? Reach out via email or social media."
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "João Vitor",
+    "surname": "Melo Kremer",
+    "title": "Full Stack Developer",
+    "subtitle": "From Brazil to the world. Building digital experiences with clean code and modern design.",
+    "cta_story": "Watch My Story",
+    "cta_projects": "View Projects"
+  },
+  "video": {
+    "heading": "Who I Am",
+    "description": "Watch a bit about my journey and what drives me as a developer.",
+    "unmute": "Unmute",
+    "mute": "Mute"
+  },
+  "gallery": {
+    "heading": "Around the World",
+    "subtitle": "Moments from my international journey",
+    "items": {
+      "dubai-1": {
+        "alt": "Dubai skyline",
+        "caption": "Office in Dubai",
+        "location": "Dubai, UAE"
+      },
+      "dubai-2": {
+        "alt": "Remote work",
+        "caption": "International work",
+        "location": "Dubai, UAE"
+      },
+      "dubai-3": {
+        "alt": "Networking",
+        "caption": "Global networking",
+        "location": "Dubai, UAE"
+      },
+      "dubai-4": {
+        "alt": "Team",
+        "caption": "International team",
+        "location": "Dubai, UAE"
+      }
+    }
+  },
+  "about": {
+    "heading": "About Me",
+    "subtitle": "{years}+ years building solutions that make a difference",
+    "bio_intro": "I'm a Full Stack Developer with {years}+ years of market experience and a track record of above-average results since day one.",
+    "bio_detail": "I started studying programming in October 2023 and within a few months I was already standing out in open source projects and landing my first job. Today I work remotely, provide freelance services, and deliver high-quality projects for clients who demand excellence.",
+    "milestones_title": "Career Milestones",
+    "milestones": {
+      "opensource": {
+        "title": "Open Source & Recognition",
+        "description": "Joined the SouJunior open source project and stood out among the developers. My LinkedIn posts about deliveries gained visibility and opened doors.",
+        "time": "Apr 2023"
+      },
+      "first_job": {
+        "title": "First Job",
+        "description": "Landed my first remote job as a Junior Developer at Dopster, a startup where I dove headfirst into the modern web ecosystem.",
+        "time": "Jun 2023"
+      },
+      "tech_lead": {
+        "title": "Tech Lead at 6 Months",
+        "description": "Promoted to tech lead and considered mid-level in just 6 months. Started working with React Native, React, and Next.js across multiple projects.",
+        "time": "Dec 2023"
+      },
+      "dubai_hire": {
+        "title": "Hired by Dubai",
+        "description": "Passed the selection process as a web developer for a Dubai-based company. In less than 1 year of career, I was already working in the international market.",
+        "time": "May 2024"
+      },
+      "dubai_mission": {
+        "title": "Dubai Mission",
+        "description": "Called as a crucial piece to work on-site in Dubai from December 4th to 24th. Together with the local team and another Brazilian dev, delivered a new backoffice version — migrating from legacy Angular to React and Next.js with multitenant architecture — in record time. Returned with mission accomplished and a raise.",
+        "time": "Dec 2024"
+      },
+      "europe": {
+        "title": "European Clients",
+        "description": "Expanded my reach to the European market, landing clients in Portugal and across Europe. Delivering high-quality freelance projects for companies that demand excellence and punctuality.",
+        "time": "2025"
+      }
+    },
+    "stats": {
+      "experience": "Years of Experience",
+      "projects": "Projects Delivered",
+      "technologies": "Technologies",
+      "countries": "Countries Worked"
+    },
+    "tech_title": "Main Stack",
+    "tech": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Database"
+    }
+  },
+  "skills": {
+    "heading": "Technologies",
+    "subtitle": "Tools and technologies I use daily",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Tools & DevOps",
+      "database": "Database"
+    }
+  },
+  "projects": {
+    "heading": "Projects",
+    "subtitle": "Some of the projects I've built",
+    "view_code": "View Code",
+    "view_demo": "Live Demo",
+    "featured": "Featured",
+    "items": {
+      "project-1": {
+        "title": "Project 1",
+        "description": "Description of your first featured project. Edit in src/i18n/messages."
+      },
+      "project-2": {
+        "title": "Project 2",
+        "description": "Description of your second project. Edit in src/i18n/messages."
+      },
+      "project-3": {
+        "title": "Project 3",
+        "description": "Description of your third project. Edit in src/i18n/messages."
+      }
+    }
+  },
+  "experience": {
+    "heading": "Experience",
+    "subtitle": "My professional journey",
+    "present": "Present",
+    "items": {
+      "exp-1": {
+        "company": "Dubai Company",
+        "role": "Full Stack Developer",
+        "period": "2024 - Present",
+        "description": "Developing web solutions for the international market.",
+        "location": "Dubai, UAE (Remote)"
+      },
+      "exp-2": {
+        "company": "Previous Company",
+        "role": "Web Developer",
+        "period": "2023 - 2024",
+        "description": "Career beginnings as a developer.",
+        "location": "Brazil"
+      }
+    }
+  },
+  "contact": {
+    "heading": "Let's Work Together?",
+    "subtitle": "I'm always open to new projects and opportunities. Get in touch and let's turn your idea into reality.",
+    "cta_whatsapp": "Message on WhatsApp",
+    "cta_email": "Send Email",
+    "or": "or find me on socials",
+    "socials": {
+      "github": "My projects and open source code",
+      "linkedin": "My professional journey",
+      "email": "For proposals and partnerships"
+    }
+  },
+  "footer": {
+    "built_with": "Built with",
+    "by": "by",
+    "description": "Full Stack Developer creating digital experiences with clean code and modern design.",
+    "nav_title": "Navigation",
+    "social_title": "Connect",
+    "copyright": "All rights reserved."
+  },
+  "airplane_journey": {
+    "heading": "My Flight Path",
+    "subtitle": "A journey through the skies of my career",
+    "scroll_hint": "Scroll to fly through my milestones"
+  },
+  "theme_panel": {
+    "title": "Appearance",
+    "mode": "Mode",
+    "color": "Color",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  }
+}

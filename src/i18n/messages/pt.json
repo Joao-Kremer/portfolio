@@ -1,0 +1,195 @@
+{
+  "meta": {
+    "title": "João Vitor Melo Kremer | Full Stack Developer",
+    "description": "Desenvolvedor Full Stack com experiência internacional. Do Brasil para Dubai em 11 meses. Especialista em React, Node.js e TypeScript."
+  },
+  "nav": {
+    "about": "Sobre",
+    "skills": "Skills",
+    "projects": "Projetos",
+    "experience": "Experiência",
+    "contact": "Contato",
+    "preview_about": "Conheça minha trajetória do Brasil para Dubai e o que me motiva como desenvolvedor.",
+    "preview_skills": "As tecnologias e ferramentas que domino: React, Node.js, TypeScript e muito mais.",
+    "preview_projects": "Projetos que construí — do conceito ao deploy, com código e demos ao vivo.",
+    "preview_experience": "Minha jornada profissional e as empresas onde trabalhei.",
+    "preview_contact": "Vamos conversar? Entre em contato por e-mail ou redes sociais."
+  },
+  "hero": {
+    "greeting": "Olá, eu sou",
+    "name": "João Vitor",
+    "surname": "Melo Kremer",
+    "title": "Full Stack Developer",
+    "subtitle": "Do Brasil para o mundo. Construindo experiências digitais com código limpo e design moderno.",
+    "cta_story": "Conheça Minha História",
+    "cta_projects": "Ver Projetos"
+  },
+  "video": {
+    "heading": "Quem Sou Eu",
+    "description": "Assista um pouco sobre minha trajetória e o que me motiva como desenvolvedor.",
+    "unmute": "Ativar som",
+    "mute": "Desativar som"
+  },
+  "gallery": {
+    "heading": "Pelo Mundo",
+    "subtitle": "Momentos da minha jornada internacional",
+    "items": {
+      "dubai-1": {
+        "alt": "Dubai skyline",
+        "caption": "Escritório em Dubai",
+        "location": "Dubai, UAE"
+      },
+      "dubai-2": {
+        "alt": "Trabalho remoto",
+        "caption": "Trabalho internacional",
+        "location": "Dubai, UAE"
+      },
+      "dubai-3": {
+        "alt": "Networking",
+        "caption": "Networking global",
+        "location": "Dubai, UAE"
+      },
+      "dubai-4": {
+        "alt": "Equipe",
+        "caption": "Equipe internacional",
+        "location": "Dubai, UAE"
+      }
+    }
+  },
+  "about": {
+    "heading": "Sobre Mim",
+    "subtitle": "{years}+ anos construindo soluções que fazem a diferença",
+    "bio_intro": "Sou um desenvolvedor Full Stack com {years}+ anos de experiência no mercado e uma trajetória marcada por resultados acima da média desde o primeiro dia.",
+    "bio_detail": "Comecei meus estudos em programação em outubro de 2023 e em poucos meses já estava me destacando em projetos open source e conquistando meu primeiro emprego. Hoje atuo home office, presto serviços freelance e entrego projetos de alta qualidade para clientes que exigem excelência.",
+    "milestones_title": "Marcos da Carreira",
+    "milestones": {
+      "opensource": {
+        "title": "Open Source & Destaque",
+        "description": "Entrei no projeto open source SouJunior e me destaquei entre os programadores. Minhas postagens no LinkedIn sobre as entregas ganharam visibilidade e abriram portas.",
+        "time": "Abr 2023"
+      },
+      "first_job": {
+        "title": "Primeiro Emprego",
+        "description": "Conquistei meu primeiro emprego remoto como Desenvolvedor Junior na Dopster, uma startup onde mergulhei de cabeça no ecossistema web moderno.",
+        "time": "Jun 2023"
+      },
+      "tech_lead": {
+        "title": "Líder Técnico aos 6 Meses",
+        "description": "Promovido a líder técnico e considerado pleno do time em apenas 6 meses de empresa. Passei a atuar com React Native, React e Next.js em múltiplos projetos.",
+        "time": "Dez 2023"
+      },
+      "dubai_hire": {
+        "title": "Contratado por Dubai",
+        "description": "Aprovado em processo seletivo como desenvolvedor web para uma empresa de Dubai. Em menos de 1 ano de carreira, já atuava no mercado internacional.",
+        "time": "Mai 2024"
+      },
+      "dubai_mission": {
+        "title": "Missão em Dubai",
+        "description": "Convocado como peça crucial para trabalhar presencialmente em Dubai de 4 a 24 de dezembro. Junto com o time local e outro dev brasileiro, entreguei a nova versão de um backoffice — migrando de Angular legado para React e Next.js com arquitetura multitenant — em tempo recorde. Voltei com missão cumprida e aumento.",
+        "time": "Dez 2024"
+      },
+      "europe": {
+        "title": "Clientes na Europa",
+        "description": "Expandi minha atuação para o mercado europeu, conquistando clientes em Portugal e na Europa. Entregando projetos freelance de alta qualidade para empresas que exigem excelência e pontualidade.",
+        "time": "2025"
+      }
+    },
+    "stats": {
+      "experience": "Anos de Experiência",
+      "projects": "Projetos Entregues",
+      "technologies": "Tecnologias",
+      "countries": "Países Trabalhados"
+    },
+    "tech_title": "Stack Principal",
+    "tech": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Banco de Dados"
+    }
+  },
+  "skills": {
+    "heading": "Tecnologias",
+    "subtitle": "Ferramentas e tecnologias que utilizo no dia a dia",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Ferramentas & DevOps",
+      "database": "Banco de Dados"
+    }
+  },
+  "projects": {
+    "heading": "Projetos",
+    "subtitle": "Alguns dos projetos que construí",
+    "view_code": "Ver Código",
+    "view_demo": "Ver Demo",
+    "featured": "Destaque",
+    "items": {
+      "project-1": {
+        "title": "Projeto 1",
+        "description": "Descrição do seu primeiro projeto destaque. Edite em src/i18n/messages."
+      },
+      "project-2": {
+        "title": "Projeto 2",
+        "description": "Descrição do seu segundo projeto. Edite em src/i18n/messages."
+      },
+      "project-3": {
+        "title": "Projeto 3",
+        "description": "Descrição do seu terceiro projeto. Edite em src/i18n/messages."
+      }
+    }
+  },
+  "experience": {
+    "heading": "Experiência",
+    "subtitle": "Minha trajetória profissional",
+    "present": "Presente",
+    "items": {
+      "exp-1": {
+        "company": "Empresa em Dubai",
+        "role": "Full Stack Developer",
+        "period": "2024 - Presente",
+        "description": "Desenvolvimento de soluções web para o mercado internacional.",
+        "location": "Dubai, UAE (Remoto)"
+      },
+      "exp-2": {
+        "company": "Empresa Anterior",
+        "role": "Desenvolvedor Web",
+        "period": "2023 - 2024",
+        "description": "Início da carreira como desenvolvedor.",
+        "location": "Brasil"
+      }
+    }
+  },
+  "contact": {
+    "heading": "Vamos Trabalhar Juntos?",
+    "subtitle": "Estou sempre aberto a novos projetos e oportunidades. Entre em contato e vamos transformar sua ideia em realidade.",
+    "cta_whatsapp": "Chamar no WhatsApp",
+    "cta_email": "Enviar E-mail",
+    "or": "ou me encontre nas redes",
+    "socials": {
+      "github": "Meus projetos e código open source",
+      "linkedin": "Minha trajetória profissional",
+      "email": "Para propostas e parcerias"
+    }
+  },
+  "footer": {
+    "built_with": "Feito com",
+    "by": "por",
+    "description": "Desenvolvedor Full Stack criando experiências digitais com código limpo e design moderno.",
+    "nav_title": "Navegação",
+    "social_title": "Conecte-se",
+    "copyright": "Todos os direitos reservados."
+  },
+  "airplane_journey": {
+    "heading": "Minha Rota de Voo",
+    "subtitle": "Uma jornada pelos céus da minha carreira",
+    "scroll_hint": "Role para voar pelos meus marcos"
+  },
+  "theme_panel": {
+    "title": "Aparência",
+    "mode": "Modo",
+    "color": "Cor",
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Sistema"
+  }
+}
