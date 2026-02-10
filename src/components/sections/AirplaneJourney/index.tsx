@@ -28,6 +28,7 @@ const milestoneKeys = [
   "dubai_hire",
   "dubai_mission",
   "europe",
+  "evolving",
 ] as const;
 
 export default function AirplaneJourney() {

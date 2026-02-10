@@ -25,15 +25,17 @@ export default function MilestoneMarker({
   const [opacity, setOpacity] = useState(0);
   const prevOpacity = useRef(0);
 
-  // Place card towards center: if waypoint is on the left, card goes right (and vice versa)
-  const isWaypointLeft = WAYPOINTS[index].x < 0;
+  // Card on the opposite side of the waypoint
+  const isWaypointLeft = WAYPOINTS[index].x <= 0;
   const cardOnRight = isWaypointLeft;
 
-  // Position: at the waypoint, offset towards center
   const position = useMemo(() => {
     const basePos = WAYPOINTS[index].clone();
-    const offset = cardOnRight ? (compact ? 1.5 : 3) : (compact ? -1.5 : -3);
-    return new Vector3(basePos.x + offset, basePos.y + 0.5, basePos.z);
+    if (compact) {
+      return new Vector3(0, basePos.y + 0.5, basePos.z);
+    }
+    const cardX = cardOnRight ? 1.5 : -1.5;
+    return new Vector3(cardX, basePos.y + 0.5, basePos.z);
   }, [index, cardOnRight, compact]);
 
   // The progress value when the airplane reaches this milestone
@@ -53,17 +55,14 @@ export default function MilestoneMarker({
     return bestT;
   }, [index, total, curve]);
 
-  // useFrame runs inside R3F context — update opacity state here
   useFrame(() => {
     const p = progress.current ?? 0;
     const dist = p - milestoneT;
     let targetOpacity = 0;
 
     if (dist > -0.06 && dist < 0.12) {
-      // Fade in quickly
       targetOpacity = Math.min(1, (dist + 0.06) / 0.05);
     } else if (dist >= 0.12) {
-      // Fade out quickly so only one card is visible at a time
       targetOpacity = Math.max(0, 1 - (dist - 0.12) / 0.06);
     }
 
@@ -71,7 +70,6 @@ export default function MilestoneMarker({
       prevOpacity.current + (targetOpacity - prevOpacity.current) * 0.08;
     prevOpacity.current = smoothed;
 
-    // Only trigger React re-render when opacity changes meaningfully
     const rounded = Math.round(smoothed * 100) / 100;
     if (Math.abs(rounded - opacity) > 0.01) {
       setOpacity(rounded);
@@ -81,32 +79,53 @@ export default function MilestoneMarker({
   return (
     <group ref={groupRef} position={position}>
       <Html
-        center
-        style={{
-          width: compact ? "min(240px, 70vw)" : "340px",
-          pointerEvents: "none",
-          opacity,
-          transform: `translateY(${(1 - opacity) * 20}px)`,
-          transition: "none",
-        }}
+        center={!compact}
+        style={
+          compact
+            ? {
+                position: "fixed",
+                left: "50%",
+                bottom: "20%",
+                transform: `translateX(-50%) translateY(${(1 - opacity) * 20}px)`,
+                width: "min(280px, 80vw)",
+                pointerEvents: "none" as const,
+                opacity,
+                transition: "none",
+              }
+            : {
+                width: "340px",
+                pointerEvents: "none" as const,
+                opacity,
+                transform: `translateY(${(1 - opacity) * 20}px)`,
+                transition: "none",
+              }
+        }
         as="div"
       >
         <div
           className={`rounded-2xl border border-border/50 bg-card/95 shadow-lg shadow-primary/10 backdrop-blur-md ${
-            compact ? "p-3" : "p-5"
-          } ${cardOnRight ? "text-left" : "text-right"}`}
+            compact ? "p-3 text-center" : `p-5 ${cardOnRight ? "text-left" : "text-right"}`
+          }`}
         >
-          <span className={`inline-block rounded-full bg-primary/10 font-semibold text-primary ${
-            compact ? "px-2 py-0.5 text-xs" : "px-3 py-1 text-sm"
-          }`}>
+          <span
+            className={`inline-block rounded-full bg-primary/10 font-semibold text-primary ${
+              compact ? "px-2 py-0.5 text-xs" : "px-3 py-1 text-sm"
+            }`}
+          >
             {milestone.time}
           </span>
-          <h4 className={`font-bold text-foreground ${compact ? "mt-1 text-sm" : "mt-2 text-base"}`}>
+          <h4
+            className={`font-bold text-foreground ${
+              compact ? "mt-1 text-sm" : "mt-2 text-base"
+            }`}
+          >
             {milestone.title}
           </h4>
-          <p className={`leading-relaxed text-muted-foreground ${
-            compact ? "mt-0.5 text-[11px] line-clamp-3" : "mt-1 text-sm"
-          }`}>
+          <p
+            className={`leading-relaxed text-muted-foreground ${
+              compact ? "mt-0.5 text-xs" : "mt-1 text-sm"
+            }`}
+          >
             {milestone.description}
           </p>
         </div>

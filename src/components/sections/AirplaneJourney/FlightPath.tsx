@@ -4,7 +4,7 @@ import { Line } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 
-// 6 milestone waypoints — ascending serpentine path (compressed Z for readability)
+// 7 milestone waypoints — ascending serpentine path (compressed Z for readability)
 const WAYPOINTS = [
   new Vector3(-4, -2, 0),
   new Vector3(-1, 0, -2),
@@ -12,6 +12,7 @@ const WAYPOINTS = [
   new Vector3(0, 3, -8),
   new Vector3(-3, 5, -11),
   new Vector3(1.5, 7, -14),
+  new Vector3(-1, 9, -17),
 ];
 
 const CURVE_SEGMENTS = 200;
