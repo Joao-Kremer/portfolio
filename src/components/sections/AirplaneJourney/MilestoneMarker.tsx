@@ -60,14 +60,24 @@ export default function MilestoneMarker({
     const dist = p - milestoneT;
     let targetOpacity = 0;
 
-    if (dist > -0.06 && dist < 0.12) {
-      targetOpacity = Math.min(1, (dist + 0.06) / 0.05);
-    } else if (dist >= 0.12) {
-      targetOpacity = Math.max(0, 1 - (dist - 0.12) / 0.06);
+    if (compact) {
+      // Mobile: tighter window so cards never overlap (all share the same screen position)
+      if (dist > -0.03 && dist < 0.07) {
+        targetOpacity = Math.min(1, (dist + 0.03) / 0.03);
+      } else if (dist >= 0.07) {
+        targetOpacity = Math.max(0, 1 - (dist - 0.07) / 0.04);
+      }
+    } else {
+      if (dist > -0.06 && dist < 0.12) {
+        targetOpacity = Math.min(1, (dist + 0.06) / 0.05);
+      } else if (dist >= 0.12) {
+        targetOpacity = Math.max(0, 1 - (dist - 0.12) / 0.06);
+      }
     }
 
+    const lerpSpeed = compact ? 0.15 : 0.08;
     const smoothed =
-      prevOpacity.current + (targetOpacity - prevOpacity.current) * 0.08;
+      prevOpacity.current + (targetOpacity - prevOpacity.current) * lerpSpeed;
     prevOpacity.current = smoothed;
 
     const rounded = Math.round(smoothed * 100) / 100;

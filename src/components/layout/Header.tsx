@@ -107,12 +107,17 @@ export default function Header() {
       )}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="text-lg font-bold tracking-tight transition-colors hover:text-primary"
-        >
-          JV<span className="text-primary">K</span>
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="text-lg font-bold tracking-tight transition-colors hover:text-primary"
+          >
+            JV<span className="text-primary">K</span>
+          </button>
+          <span className="rounded-full border border-primary/30 bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
+            Beta
+          </span>
+        </div>
 
         {/* Desktop nav */}
         <div className="hidden items-center gap-1 md:flex">
