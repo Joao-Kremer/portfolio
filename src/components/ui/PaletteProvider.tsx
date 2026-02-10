@@ -23,7 +23,7 @@ type PaletteContextType = {
 };
 
 const PaletteContext = createContext<PaletteContextType>({
-  palette: "violet",
+  palette: "orange",
   setPalette: () => {},
 });
 
@@ -38,7 +38,7 @@ export default function PaletteProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [palette, setPaletteState] = useState<PaletteId>("violet");
+  const [palette, setPaletteState] = useState<PaletteId>("orange");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -46,6 +46,8 @@ export default function PaletteProvider({
     if (stored && PALETTES.some((p) => p.id === stored)) {
       setPaletteState(stored);
       document.documentElement.setAttribute("data-palette", stored);
+    } else {
+      document.documentElement.setAttribute("data-palette", "orange");
     }
     setMounted(true);
   }, []);
