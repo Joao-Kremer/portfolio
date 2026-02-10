@@ -2,7 +2,7 @@
 
 import { useRef, useMemo, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Html } from "@react-three/drei";
+import { Html, OrbitControls } from "@react-three/drei";
 import {
   Vector3,
   QuadraticBezierCurve3,
@@ -530,6 +530,13 @@ function Scene() {
 
   return (
     <>
+      <OrbitControls
+        enableZoom={false}
+        enablePan={false}
+        rotateSpeed={0.6}
+        enableDamping
+        dampingFactor={0.08}
+      />
       <SceneLighting isDark={colors.isDark} />
 
       <GlobeGroup>
@@ -601,7 +608,7 @@ export default function GlobeScene() {
       camera={{ position: [0, 0, 4.8], fov: 45 }}
       dpr={[1, 1.5]}
       gl={{ antialias: true, alpha: true }}
-      style={{ background: "transparent", pointerEvents: "none" }}
+      style={{ background: "transparent" }}
     >
       <Scene />
     </Canvas>
