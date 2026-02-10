@@ -35,7 +35,7 @@ export default function AirplaneJourney() {
   const tSection = useTranslations("airplane_journey");
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const progressRef = useFlightProgress(scrollContainerRef);
-  const [isMobile, setIsMobile] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [Scene, setScene] = useState<ComponentType<SceneProps> | null>(null);
 
   // Load AirplaneScene manually (bypasses next/dynamic + Suspense entirely).
@@ -47,16 +47,11 @@ export default function AirplaneJourney() {
   }, []);
 
   useEffect(() => {
-    const check = () => {
-      setIsMobile(
-        window.innerWidth < 768 ||
-          navigator.maxTouchPoints > 0 ||
-          window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      );
-    };
-    check();
-    window.addEventListener("resize", check, { passive: true });
-    return () => window.removeEventListener("resize", check);
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
   }, []);
 
   const milestones: Milestone[] = milestoneKeys.map((key) => ({
@@ -80,7 +75,7 @@ export default function AirplaneJourney() {
         </div>
       </AnimatedSection>
 
-      {isMobile ? (
+      {prefersReducedMotion ? (
         <MobileFallback milestones={milestones} />
       ) : (
         <div

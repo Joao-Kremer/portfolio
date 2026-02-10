@@ -79,7 +79,7 @@ export default function MilestoneMarker({
       <Html
         center
         style={{
-          width: "340px",
+          width: "min(340px, 75vw)",
           pointerEvents: "none",
           opacity,
           transform: `translateY(${(1 - opacity) * 20}px)`,
