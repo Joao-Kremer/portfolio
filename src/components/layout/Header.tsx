@@ -41,7 +41,10 @@ export default function Header() {
 
   const scrollTo = (id: string) => {
     setMobileOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    // Small delay so the menu exit animation doesn't interfere with scroll
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }, 50);
   };
 
   return (
