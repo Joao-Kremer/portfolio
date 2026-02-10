@@ -265,6 +265,34 @@
       }
     }
   },
+  "skills_universe": {
+    "heading": "Universo de Skills",
+    "subtitle": "As tecnologias que orbitam meu mundo de desenvolvimento",
+    "scroll_hint": "Role para explorar cada órbita",
+    "orbit_label": "Órbita",
+    "tech_count": "tecnologias",
+    "categories": {
+      "frontend": "Frontend",
+      "mobile": "Mobile",
+      "backend": "Backend",
+      "database": "Banco de Dados",
+      "tools": "Ferramentas & DevOps"
+    },
+    "worlds": {
+      "frontend": "Mundo Frontend",
+      "mobile": "Mundo Mobile",
+      "backend": "Mundo Backend",
+      "database": "Mundo Database",
+      "tools": "Mundo DevOps"
+    },
+    "descriptions": {
+      "frontend": "Interfaces, frameworks e bibliotecas visuais",
+      "mobile": "Apps nativos e experiências mobile",
+      "backend": "APIs, servidores e arquitetura de sistemas",
+      "database": "Armazenamento, ORMs e serviços de dados",
+      "tools": "DevOps, testes, deploy e produtividade"
+    }
+  },
   "theme_panel": {
     "title": "Aparência",
     "mode": "Modo",

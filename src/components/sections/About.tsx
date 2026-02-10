@@ -48,56 +48,6 @@ function AnimatedCounter({ value, suffix = "", duration = 2 }: { value: number; 
   );
 }
 
-/* ───── Tech stack ───── */
-const techCategories = [
-  {
-    key: "frontend",
-    span: "sm:col-span-2 lg:col-span-3",
-    items: [
-      "React", "Next.js", "Angular", "TypeScript", "JavaScript",
-      "Tailwind CSS", "MUI", "Ant Design", "Radix UI", "shadcn/ui",
-      "Styled Components", "Sass/SCSS", "Zustand", "Redux", "React Query",
-      "React Hook Form", "Zod", "Framer Motion", "Three.js", "Storybook",
-      "Next Auth", "i18next", "Vite", "Webpack", "RxJS",
-    ],
-  },
-  {
-    key: "mobile",
-    span: "",
-    items: [
-      "React Native", "Expo", "Nativewind", "React Navigation",
-      "AsyncStorage", "Push Notifications", "Deep Linking",
-    ],
-  },
-  {
-    key: "backend",
-    span: "",
-    items: [
-      "Node.js", "NestJS", "Express", "Fastify", "REST APIs", "GraphQL",
-      "Swagger/OpenAPI", "Socket.io", "JWT Auth", "OAuth 2.0",
-      "Webhooks", "Microservices",
-    ],
-  },
-  {
-    key: "database",
-    span: "",
-    items: [
-      "PostgreSQL", "MySQL", "MongoDB", "SQLite", "Redis",
-      "Prisma", "TypeORM", "Firebase", "Supabase",
-    ],
-  },
-  {
-    key: "tools",
-    span: "sm:col-span-2 lg:col-span-3",
-    items: [
-      "Git", "Docker", "AWS", "S3", "Vercel", "Netlify",
-      "GitHub Actions", "CI/CD", "Turborepo", "pnpm",
-      "Jest", "Cypress", "Datadog", "Jira", "Postman",
-      "Figma", "Linux", "Nginx",
-    ],
-  },
-];
-
 const storyChapters = ["bakery", "leap", "first_try", "return", "rise", "destiny", "present"];
 
 /* ───── Component ───── */
@@ -191,53 +141,6 @@ export default function About() {
           </div>
         </AnimatedSection>
 
-        {/* Tech Stack */}
-        <AnimatedSection delay={0.4}>
-          <div className="mt-20">
-            <h3 className="mb-8 text-center text-xl font-semibold tracking-tight sm:text-2xl">
-              <span className="gradient-text">{t("tech_title")}</span>
-            </h3>
-
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {techCategories.map(({ key, span, items }, ci) => (
-                <motion.div
-                  key={key}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.5, delay: ci * 0.12 }}
-                  className={cn(
-                    "rounded-2xl border border-border/50 bg-card/50 p-5",
-                    "transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5",
-                    span
-                  )}
-                >
-                  <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-primary">
-                    {t(`tech.${key}`)}
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {items.map((tech, ti) => (
-                      <motion.span
-                        key={tech}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: ci * 0.12 + ti * 0.05 }}
-                        className={cn(
-                          "rounded-lg border border-border/50 bg-muted/50 px-3 py-1.5",
-                          "text-sm text-foreground/80 font-medium",
-                          "transition-all duration-200 hover:border-primary/30 hover:bg-primary/5 hover:text-primary"
-                        )}
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </AnimatedSection>
       </div>
     </section>
   );

@@ -265,6 +265,34 @@
       }
     }
   },
+  "skills_universe": {
+    "heading": "Skills Universe",
+    "subtitle": "The technologies that orbit my development world",
+    "scroll_hint": "Scroll to explore each orbit",
+    "orbit_label": "Orbit",
+    "tech_count": "technologies",
+    "categories": {
+      "frontend": "Frontend",
+      "mobile": "Mobile",
+      "backend": "Backend",
+      "database": "Database",
+      "tools": "Tools & DevOps"
+    },
+    "worlds": {
+      "frontend": "Frontend World",
+      "mobile": "Mobile World",
+      "backend": "Backend World",
+      "database": "Database World",
+      "tools": "DevOps World"
+    },
+    "descriptions": {
+      "frontend": "Interfaces, frameworks & visual libraries",
+      "mobile": "Native apps & mobile experiences",
+      "backend": "APIs, servers & system architecture",
+      "database": "Storage, ORMs & data services",
+      "tools": "DevOps, testing, deploy & productivity"
+    }
+  },
   "theme_panel": {
     "title": "Appearance",
     "mode": "Mode",
