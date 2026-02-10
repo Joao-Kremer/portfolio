@@ -15,6 +15,7 @@ export default function PhotoGallery() {
     alt: t(`items.${item.id}.alt`),
     caption: t(`items.${item.id}.caption`),
     location: t(`items.${item.id}.location`),
+    comments: t.raw(`items.${item.id}.comments`) as string[],
   }));
 
   return (
@@ -28,7 +29,7 @@ export default function PhotoGallery() {
         </div>
       </AnimatedSection>
 
-      <PhotoGallery3D items={items} />
+      <PhotoGallery3D items={items} finishSign={t("finish_sign")} />
     </section>
   );
 }

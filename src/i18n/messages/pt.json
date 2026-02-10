@@ -33,37 +33,108 @@
   "gallery": {
     "heading": "Pelo Mundo",
     "subtitle": "Momentos da minha jornada internacional",
-    "scroll_hint": "Role para navegar pela constelação",
+    "scroll_hint": "Role para acompanhar o camelo pelo deserto",
+    "finish_sign": "Parabéns, você chegou ao seu destino!\nO estudo te trouxe até aqui!!",
     "items": {
+      "gold-gate": {
+        "alt": "Portão de Ouro Dubai",
+        "caption": "Portão de Ouro",
+        "location": "Dubai, UAE",
+        "comments": [
+          "Uau, o Portão de Ouro! Que lugar incrível!",
+          "Esse dia foi surreal... Dubai é outro nível!",
+          "Lembro como se fosse ontem, que vista!"
+        ]
+      },
+      "desert-eagle": {
+        "alt": "Águia no deserto",
+        "caption": "Águia do Deserto",
+        "location": "Dubai, UAE",
+        "comments": [
+          "Uma águia no deserto! Nunca vou esquecer esse momento!",
+          "Que experiência ver uma águia tão de perto!",
+          "O deserto é cheio de surpresas, olha isso!"
+        ]
+      },
+      "desert": {
+        "alt": "Paisagem do deserto",
+        "caption": "Deserto Árabe",
+        "location": "Dubai, UAE",
+        "comments": [
+          "O deserto árabe... paz total, que lugar!",
+          "Nada se compara a ver o deserto ao vivo!",
+          "Esse silêncio do deserto é algo que nunca esqueci!"
+        ]
+      },
+      "sharjah-desert": {
+        "alt": "Deserto de Sharjah",
+        "caption": "Deserto de Sharjah",
+        "location": "Sharjah, UAE",
+        "comments": [
+          "Sharjah tem um deserto lindo demais!",
+          "Esse passeio pelo deserto de Sharjah foi top!",
+          "Que aventura foi explorar Sharjah!"
+        ]
+      },
       "burj-selfie": {
         "alt": "Na frente do Burj Khalifa",
         "caption": "Burj Khalifa",
-        "location": "Dubai, UAE"
+        "location": "Dubai, UAE",
+        "comments": [
+          "Eu na frente do Burj Khalifa! Sonho realizado!",
+          "Tirar essa foto foi emocionante demais!",
+          "O Burj é ainda maior ao vivo, impressionante!"
+        ]
       },
       "marina-wheel": {
         "alt": "Roda-gigante Dubai Marina",
         "caption": "Ain Dubai",
-        "location": "Dubai Marina, UAE"
+        "location": "Dubai Marina, UAE",
+        "comments": [
+          "A Ain Dubai, maior roda-gigante do mundo!",
+          "Dubai Marina à noite é espetacular!",
+          "Que noite incrível na Marina!"
+        ]
       },
       "burj-video": {
         "alt": "Vista do Burj Khalifa",
         "caption": "Vista do Burj Khalifa",
-        "location": "Dubai, UAE"
+        "location": "Dubai, UAE",
+        "comments": [
+          "Essa vista do Burj... sem palavras!",
+          "Gravei pra nunca esquecer esse momento!",
+          "Olha o tamanho desse prédio, surreal!"
+        ]
       },
       "dubai-1": {
         "alt": "Dubai skyline",
         "caption": "Escritório em Dubai",
-        "location": "Dubai, UAE"
+        "location": "Dubai, UAE",
+        "comments": [
+          "Nosso escritório em Dubai! Time sensacional!",
+          "Trabalhar em Dubai foi uma experiência única!",
+          "Que orgulho fazer parte desse time!"
+        ]
       },
       "dubai-2": {
         "alt": "Burj Khalifa",
         "caption": "Burj Khalifa",
-        "location": "Dubai, UAE"
+        "location": "Dubai, UAE",
+        "comments": [
+          "Mais uma do Burj, não canso dessa vista!",
+          "O Burj Khalifa de outro ângulo, sempre lindo!",
+          "Dubai nunca decepciona, que cidade!"
+        ]
       },
       "dubai-3": {
         "alt": "Equipe",
         "caption": "Equipe internacional",
-        "location": "Dubai, UAE"
+        "location": "Dubai, UAE",
+        "comments": [
+          "Meu time internacional! Galera incrível!",
+          "Trabalhar com pessoas do mundo todo é inspirador!",
+          "Equipe top demais, saudades desse dia!"
+        ]
       }
     }
   },

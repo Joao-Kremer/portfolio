@@ -33,37 +33,108 @@
   "gallery": {
     "heading": "Around the World",
     "subtitle": "Moments from my international journey",
-    "scroll_hint": "Scroll to navigate the constellation",
+    "scroll_hint": "Scroll to follow the camel through the desert",
+    "finish_sign": "Congratulations, you reached your destination!\nStudy brought you all the way here!!",
     "items": {
+      "gold-gate": {
+        "alt": "Dubai Gold Gate",
+        "caption": "Gold Gate",
+        "location": "Dubai, UAE",
+        "comments": [
+          "Wow, the Gold Gate! What an incredible place!",
+          "This day was surreal... Dubai is next level!",
+          "I remember it like it was yesterday, what a view!"
+        ]
+      },
+      "desert-eagle": {
+        "alt": "Eagle in the desert",
+        "caption": "Desert Eagle",
+        "location": "Dubai, UAE",
+        "comments": [
+          "An eagle in the desert! I'll never forget this moment!",
+          "What an experience seeing an eagle up close like that!",
+          "The desert is full of surprises, look at this!"
+        ]
+      },
+      "desert": {
+        "alt": "Desert landscape",
+        "caption": "Arabian Desert",
+        "location": "Dubai, UAE",
+        "comments": [
+          "The Arabian desert... total peace, what a place!",
+          "Nothing compares to seeing the desert in person!",
+          "The silence of the desert is something I'll never forget!"
+        ]
+      },
+      "sharjah-desert": {
+        "alt": "Sharjah desert",
+        "caption": "Sharjah Desert",
+        "location": "Sharjah, UAE",
+        "comments": [
+          "Sharjah has such a beautiful desert!",
+          "This trip through Sharjah's desert was amazing!",
+          "What an adventure exploring Sharjah!"
+        ]
+      },
       "burj-selfie": {
         "alt": "In front of Burj Khalifa",
         "caption": "Burj Khalifa",
-        "location": "Dubai, UAE"
+        "location": "Dubai, UAE",
+        "comments": [
+          "Me in front of the Burj Khalifa! Dream come true!",
+          "Taking this photo was so emotional!",
+          "The Burj is even bigger in person, insane!"
+        ]
       },
       "marina-wheel": {
         "alt": "Dubai Marina ferris wheel",
         "caption": "Ain Dubai",
-        "location": "Dubai Marina, UAE"
+        "location": "Dubai Marina, UAE",
+        "comments": [
+          "Ain Dubai, the world's largest ferris wheel!",
+          "Dubai Marina at night is spectacular!",
+          "What an incredible night at the Marina!"
+        ]
       },
       "burj-video": {
         "alt": "Burj Khalifa view",
         "caption": "Burj Khalifa View",
-        "location": "Dubai, UAE"
+        "location": "Dubai, UAE",
+        "comments": [
+          "This view of the Burj... speechless!",
+          "Recorded this so I'd never forget this moment!",
+          "Look at the size of this building, surreal!"
+        ]
       },
       "dubai-1": {
         "alt": "Dubai skyline",
         "caption": "Office in Dubai",
-        "location": "Dubai, UAE"
+        "location": "Dubai, UAE",
+        "comments": [
+          "Our office in Dubai! What an amazing team!",
+          "Working in Dubai was a unique experience!",
+          "So proud to be part of this team!"
+        ]
       },
       "dubai-2": {
         "alt": "Burj Khalifa",
         "caption": "Burj Khalifa",
-        "location": "Dubai, UAE"
+        "location": "Dubai, UAE",
+        "comments": [
+          "Another one of the Burj, never get tired of this view!",
+          "Burj Khalifa from another angle, always stunning!",
+          "Dubai never disappoints, what a city!"
+        ]
       },
       "dubai-3": {
         "alt": "Team",
         "caption": "International team",
-        "location": "Dubai, UAE"
+        "location": "Dubai, UAE",
+        "comments": [
+          "My international team! Incredible people!",
+          "Working with people from around the world is inspiring!",
+          "Such an awesome team, I miss this day!"
+        ]
       }
     }
   },
