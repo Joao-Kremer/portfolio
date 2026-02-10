@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo, useState } from "react";
+import { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Html, OrbitControls } from "@react-three/drei";
 import {
@@ -520,7 +520,7 @@ function SceneLighting({ isDark }: { isDark: boolean }) {
 
 // --- Main scene ---
 
-function Scene() {
+function Scene({ isMobile }: { isMobile: boolean }) {
   const colors = useCSSVariables();
 
   const locationVecs = useMemo(
@@ -530,13 +530,15 @@ function Scene() {
 
   return (
     <>
-      <OrbitControls
-        enableZoom={false}
-        enablePan={false}
-        rotateSpeed={0.6}
-        enableDamping
-        dampingFactor={0.08}
-      />
+      {!isMobile && (
+        <OrbitControls
+          enableZoom={false}
+          enablePan={false}
+          rotateSpeed={0.6}
+          enableDamping
+          dampingFactor={0.08}
+        />
+      )}
       <SceneLighting isDark={colors.isDark} />
 
       <GlobeGroup>
@@ -603,14 +605,27 @@ function Scene() {
 }
 
 export default function GlobeScene() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
   return (
     <Canvas
       camera={{ position: [0, 0, 4.8], fov: 45 }}
       dpr={[1, 1.5]}
       gl={{ antialias: true, alpha: true }}
-      style={{ background: "transparent" }}
+      style={{
+        background: "transparent",
+        pointerEvents: isMobile ? "none" : "auto",
+      }}
     >
-      <Scene />
+      <Scene isMobile={isMobile} />
     </Canvas>
   );
 }

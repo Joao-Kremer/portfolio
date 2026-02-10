@@ -14,7 +14,7 @@ export default function HeroGlobe() {
   if (!Scene) return null;
 
   return (
-    <div className="absolute inset-0 z-0 pointer-events-none md:pointer-events-auto">
+    <div className="absolute inset-0 z-0">
       <Scene />
     </div>
   );
