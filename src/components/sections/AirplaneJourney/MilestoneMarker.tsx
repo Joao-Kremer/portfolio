@@ -10,6 +10,7 @@ type Props = {
   total: number;
   progress: React.RefObject<number>;
   milestone: Milestone;
+  compact?: boolean;
 };
 
 export default function MilestoneMarker({
@@ -17,6 +18,7 @@ export default function MilestoneMarker({
   total,
   progress,
   milestone,
+  compact = false,
 }: Props) {
   const { curve } = useFlightCurve();
   const groupRef = useRef<Group>(null);
@@ -25,12 +27,12 @@ export default function MilestoneMarker({
 
   const isLeft = index % 2 === 0;
 
-  // Position: at the waypoint, offset laterally
+  // Position: at the waypoint, offset laterally (less on mobile)
   const position = useMemo(() => {
     const basePos = WAYPOINTS[index].clone();
-    const offset = isLeft ? -3 : 3;
+    const offset = isLeft ? (compact ? -1.5 : -3) : (compact ? 1.5 : 3);
     return new Vector3(basePos.x + offset, basePos.y + 0.5, basePos.z);
-  }, [index, isLeft]);
+  }, [index, isLeft, compact]);
 
   // The progress value when the airplane reaches this milestone
   const milestoneT = useMemo(() => {
@@ -79,7 +81,7 @@ export default function MilestoneMarker({
       <Html
         center
         style={{
-          width: "min(340px, 75vw)",
+          width: compact ? "min(240px, 70vw)" : "340px",
           pointerEvents: "none",
           opacity,
           transform: `translateY(${(1 - opacity) * 20}px)`,
@@ -88,19 +90,23 @@ export default function MilestoneMarker({
         as="div"
       >
         <div
-          className={`rounded-2xl border border-border/50 bg-card/95 p-5 shadow-lg shadow-primary/10 backdrop-blur-md ${
-            isLeft ? "text-right" : "text-left"
-          }`}
+          className={`rounded-2xl border border-border/50 bg-card/95 shadow-lg shadow-primary/10 backdrop-blur-md ${
+            compact ? "p-3" : "p-5"
+          } ${isLeft ? "text-right" : "text-left"}`}
         >
-          <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold text-primary">
+          <span className={`inline-block rounded-full bg-primary/10 font-semibold text-primary ${
+            compact ? "px-2 py-0.5 text-xs" : "px-3 py-1 text-sm"
+          }`}>
             {milestone.time}
           </span>
-          <h4 className="mt-2 text-base font-bold text-foreground">
+          <h4 className={`font-bold text-foreground ${compact ? "mt-1 text-sm" : "mt-2 text-base"}`}>
             {milestone.title}
           </h4>
-          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-            {milestone.description}
-          </p>
+          {!compact && (
+            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+              {milestone.description}
+            </p>
+          )}
         </div>
       </Html>
     </group>

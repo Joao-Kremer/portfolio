@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo, type RefObject } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useMemo, useState, useEffect, type RefObject } from "react";
+import { useFrame, useThree } from "@react-three/fiber";
 import { Canvas } from "@react-three/fiber";
 import { Vector3 } from "three";
 import FlightPath, { useFlightCurve } from "./FlightPath";
@@ -11,23 +11,31 @@ import MilestoneMarker from "./MilestoneMarker";
 import useCSSVariables from "./useCSSVariables";
 import type { Milestone } from "./index";
 
-/** Camera follows the airplane so every milestone has the same zoom. */
+/** Camera follows the airplane — adapts offset/FOV to screen width. */
 function CameraRig({ progress }: { progress: RefObject<number> }) {
   const { curve } = useFlightCurve();
   const _target = useMemo(() => new Vector3(), []);
+  const { size, camera } = useThree();
+
+  // Wider FOV + further camera on narrow screens
+  const isNarrow = size.width < 768;
 
   useFrame((state) => {
     const t = Math.max(0.001, Math.min(0.999, progress.current ?? 0));
     const pos = curve.getPointAt(t);
 
-    // Keep a fixed offset behind/above the airplane
-    const camY = pos.y + 2;
-    const camZ = pos.z + 12;
+    const camY = pos.y + (isNarrow ? 3 : 2);
+    const camZ = pos.z + (isNarrow ? 16 : 12);
 
     state.camera.position.y += (camY - state.camera.position.y) * 0.04;
     state.camera.position.z += (camZ - state.camera.position.z) * 0.04;
 
-    // Look at the airplane position
+    // Smoothly adjust FOV on mobile
+    const targetFov = isNarrow ? 65 : 55;
+    const cam = camera as { fov: number; updateProjectionMatrix: () => void };
+    cam.fov += (targetFov - cam.fov) * 0.05;
+    cam.updateProjectionMatrix();
+
     _target.set(0, pos.y, pos.z);
     state.camera.lookAt(_target);
   });
@@ -42,6 +50,15 @@ type Props = {
 
 export default function AirplaneScene({ milestones, progressRef }: Props) {
   const colors = useCSSVariables();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   return (
     <Canvas
@@ -68,6 +85,7 @@ export default function AirplaneScene({ milestones, progressRef }: Props) {
           total={milestones.length}
           progress={progressRef}
           milestone={milestone}
+          compact={isMobile}
         />
       ))}
     </Canvas>
