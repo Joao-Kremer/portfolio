@@ -2,7 +2,7 @@
 
 import { useRef, useMemo, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Html, OrbitControls } from "@react-three/drei";
+import { Html } from "@react-three/drei";
 import {
   Vector3,
   QuadraticBezierCurve3,
@@ -494,10 +494,16 @@ function FloatingParticles({ color, count }: { color: string; count: number }) {
   );
 }
 
-// --- Globe group (static container — rotation handled by OrbitControls) ---
+// --- Globe group (auto-rotating) ---
 
 function GlobeGroup({ children }: { children: React.ReactNode }) {
-  return <group>{children}</group>;
+  const ref = useRef<Group>(null);
+
+  useFrame((_, delta) => {
+    if (ref.current) ref.current.rotation.y += delta * 0.07;
+  });
+
+  return <group ref={ref}>{children}</group>;
 }
 
 // --- Lighting ---
@@ -524,15 +530,6 @@ function Scene() {
 
   return (
     <>
-      <OrbitControls
-        enableZoom={false}
-        enablePan={false}
-        autoRotate
-        autoRotateSpeed={0.4}
-        rotateSpeed={0.6}
-        enableDamping
-        dampingFactor={0.08}
-      />
       <SceneLighting isDark={colors.isDark} />
 
       <GlobeGroup>
@@ -604,7 +601,7 @@ export default function GlobeScene() {
       camera={{ position: [0, 0, 4.8], fov: 45 }}
       dpr={[1, 1.5]}
       gl={{ antialias: true, alpha: true }}
-      style={{ background: "transparent" }}
+      style={{ background: "transparent", pointerEvents: "none" }}
     >
       <Scene />
     </Canvas>
