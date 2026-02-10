@@ -41,6 +41,14 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close tip on scroll
+  useEffect(() => {
+    if (!tipOpen) return;
+    const close = () => setTipOpen(false);
+    window.addEventListener("scroll", close, { passive: true, once: true });
+    return () => window.removeEventListener("scroll", close);
+  }, [tipOpen]);
+
   const scrollTo = (id: string) => {
     setMobileOpen(false);
     // Small delay so the menu exit animation doesn't interfere with scroll
