@@ -158,6 +158,67 @@
     "subtitle": "Uma jornada pelos céus da minha carreira",
     "scroll_hint": "Role para voar pelos meus marcos"
   },
+  "photo_gallery": {
+    "heading": "Minha Jornada Através do Código",
+    "subtitle": "Como a programação me levou do Brasil para o outro lado do mundo",
+    "scroll_hint": "Role para reviver a jornada",
+    "items": {
+      "gold-gate": {
+        "alt": "No Portão de Ouro em Dubai",
+        "caption": "A Recepção Dourada",
+        "location": "Dubai, EAU",
+        "story": "Primeiro dia em Dubai. Passando pelo icônico Portão de Ouro, tudo parecia surreal — 11 meses atrás eu escrevia minhas primeiras linhas de código no Brasil, e agora estava entrando em um novo mundo."
+      },
+      "desert-eagle": {
+        "alt": "Águia no deserto árabe",
+        "caption": "Asas da Liberdade",
+        "location": "Dubai, EAU",
+        "story": "No deserto árabe, encontrei essa águia magnífica. Um símbolo perfeito do que a programação me deu: a liberdade de voar além das fronteiras e alcançar lugares que nunca imaginei."
+      },
+      "desert": {
+        "alt": "Paisagem do deserto árabe",
+        "caption": "O Horizonte Infinito",
+        "location": "Dubai, EAU",
+        "story": "A vastidão do deserto árabe me lembrou que nenhum limite é real. De uma cidade pequena no Brasil até as dunas do Oriente Médio — tudo através do poder do código."
+      },
+      "sharjah-desert": {
+        "alt": "No deserto de Sharjah",
+        "caption": "Além da Zona de Conforto",
+        "location": "Sharjah, EAU",
+        "story": "Explorando o deserto de Sharjah na folga. Cada nova experiência no exterior reforçava minha crença: quando você investe nas suas habilidades, o mundo abre suas portas."
+      },
+      "burj-video": {
+        "alt": "Vídeo do Burj Khalifa",
+        "caption": "Tocando o Céu",
+        "location": "Dubai, EAU",
+        "story": "Diante do prédio mais alto do mundo, filmando esse momento. Menos de 1 ano na área de tech e eu estava aqui — prova viva de que dedicação e código podem te levar a qualquer lugar."
+      },
+      "burj-selfie": {
+        "alt": "Na frente do Burj Khalifa",
+        "caption": "Sonho Realizado",
+        "location": "Dubai, EAU",
+        "story": "A clássica selfie no Burj Khalifa. Isso não era turismo — eu estava aqui porque uma empresa de Dubai reconheceu meu trabalho e me trouxe para entregar um projeto crítico."
+      },
+      "marina-wheel": {
+        "alt": "Na roda-gigante de Dubai Marina",
+        "caption": "No Topo do Mundo",
+        "location": "Dubai Marina, EAU",
+        "story": "Ain Dubai, a maior roda-gigante do mundo. Lá de cima, olhando o skyline da Marina, eu refletia sobre o quão longe eu havia chegado — e o quanto ainda queria ir."
+      },
+      "dubai-group": {
+        "alt": "Foto do time em Dubai",
+        "caption": "O Time Que Fez Acontecer",
+        "location": "Dubai, EAU",
+        "story": "Com o time após entregar a nova versão do backoffice. Migramos de Angular legado para React e Next.js com arquitetura multitenant — em tempo recorde. Missão cumprida."
+      },
+      "burj-close": {
+        "alt": "Perto do Burj Khalifa",
+        "caption": "Até a Próxima",
+        "location": "Dubai, EAU",
+        "story": "Último olhar para o Burj Khalifa antes de voltar ao Brasil. Voltei com aumento, novas conexões e a certeza de que isso era apenas o começo da minha jornada internacional."
+      }
+    }
+  },
   "theme_panel": {
     "title": "Aparência",
     "mode": "Modo",

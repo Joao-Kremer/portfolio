@@ -7,6 +7,7 @@ import Projects from "@/components/sections/Projects";
 import Experience from "@/components/sections/Experience";
 import Contact from "@/components/sections/Contact";
 import AirplaneJourney from "@/components/sections/AirplaneJourney";
+import PhotoGallery from "@/components/sections/PhotoGallery";
 import SectionDivider from "@/components/ui/SectionDivider";
 
 type Props = {
@@ -24,6 +25,8 @@ export default async function HomePage({ params }: Props) {
       <AirplaneJourney />
       <SectionDivider />
       <VideoIntro />
+      <SectionDivider />
+      <PhotoGallery />
       <SectionDivider />
       <About />
       <SectionDivider />

@@ -158,6 +158,67 @@
     "subtitle": "A journey through the skies of my career",
     "scroll_hint": "Scroll to fly through my milestones"
   },
+  "photo_gallery": {
+    "heading": "My Journey Through Code",
+    "subtitle": "How programming took me from Brazil to the other side of the world",
+    "scroll_hint": "Scroll to relive the journey",
+    "items": {
+      "gold-gate": {
+        "alt": "At the Gold Gate in Dubai",
+        "caption": "The Golden Welcome",
+        "location": "Dubai, UAE",
+        "story": "First day in Dubai. Walking through the iconic Gold Gate, everything felt surreal — 11 months ago I was writing my first lines of code in Brazil, and now I was stepping into a new world."
+      },
+      "desert-eagle": {
+        "alt": "Eagle in the Arabian desert",
+        "caption": "Wings of Freedom",
+        "location": "Dubai, UAE",
+        "story": "In the Arabian desert, I met this magnificent eagle. A perfect symbol of what programming gave me: the freedom to fly beyond borders and reach places I never imagined."
+      },
+      "desert": {
+        "alt": "Arabian desert landscape",
+        "caption": "The Endless Horizon",
+        "location": "Dubai, UAE",
+        "story": "The vastness of the Arabian desert reminded me that no limit is real. From a small city in Brazil to the dunes of the Middle East — all through the power of code."
+      },
+      "sharjah-desert": {
+        "alt": "In the Sharjah desert",
+        "caption": "Beyond Comfort Zones",
+        "location": "Sharjah, UAE",
+        "story": "Exploring Sharjah's desert on my day off. Every new experience abroad reinforced my belief: when you invest in your skills, the world opens its doors."
+      },
+      "burj-video": {
+        "alt": "Burj Khalifa video",
+        "caption": "Touching the Sky",
+        "location": "Dubai, UAE",
+        "story": "Standing before the tallest building in the world, filming this moment. Less than a year in tech and I was here — living proof that dedication and code can take you anywhere."
+      },
+      "burj-selfie": {
+        "alt": "In front of the Burj Khalifa",
+        "caption": "Dream Realized",
+        "location": "Dubai, UAE",
+        "story": "The classic Burj Khalifa selfie. This wasn't just tourism — I was here because a Dubai company recognized my work and flew me in to deliver a critical project."
+      },
+      "marina-wheel": {
+        "alt": "At Dubai Marina ferris wheel",
+        "caption": "On Top of the World",
+        "location": "Dubai Marina, UAE",
+        "story": "Ain Dubai, the world's largest ferris wheel. From up there, looking at the Marina skyline, I reflected on how far I'd come — and how much further I wanted to go."
+      },
+      "dubai-group": {
+        "alt": "Team photo in Dubai",
+        "caption": "The Team That Made It Happen",
+        "location": "Dubai, UAE",
+        "story": "With the team after delivering the new backoffice version. We migrated from legacy Angular to React and Next.js with multitenant architecture — in record time. Mission accomplished."
+      },
+      "burj-close": {
+        "alt": "Close to the Burj Khalifa",
+        "caption": "Until Next Time",
+        "location": "Dubai, UAE",
+        "story": "One last look at the Burj Khalifa before heading back to Brazil. I returned with a raise, new connections, and the certainty that this was just the beginning of my international journey."
+      }
+    }
+  },
   "theme_panel": {
     "title": "Appearance",
     "mode": "Mode",
