@@ -292,6 +292,12 @@
       "tools": "DevOps, testing, deploy & productivity"
     }
   },
+  "mobile_tip": {
+    "title": "Best on Desktop",
+    "message": "This portfolio was optimized to deliver the best experience on every device. On desktop, you'll enjoy enhanced 3D effects, interactive animations, and extra features. For the full experience, visit on a larger screen!",
+    "thanks": "Thanks for visiting!",
+    "close": "Got it!"
+  },
   "theme_panel": {
     "title": "Appearance",
     "mode": "Mode",

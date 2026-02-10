@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, User, Orbit, Briefcase, MessageCircle, Github, Linkedin, Mail } from "lucide-react";
+import { Menu, X, User, Orbit, Briefcase, MessageCircle, Github, Linkedin, Mail, Info, Monitor, Sparkles } from "lucide-react";
 import ThemePanel from "@/components/ui/ThemePanel";
 import LangToggle from "@/components/ui/LangToggle";
 import { cn } from "@/lib/utils";
@@ -23,10 +23,12 @@ const mobileSocials = [
 
 export default function Header() {
   const t = useTranslations("nav");
+  const tTip = useTranslations("mobile_tip");
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+  const [tipOpen, setTipOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -110,6 +112,21 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <LangToggle />
           <ThemePanel />
+          {/* Mobile info tip */}
+          <button
+            onClick={() => setTipOpen(true)}
+            className={cn(
+              "relative flex h-9 w-9 items-center justify-center rounded-full md:hidden",
+              "bg-primary/10 text-primary transition-colors active:bg-primary/20"
+            )}
+            aria-label="Info"
+          >
+            <Info className="h-4 w-4" />
+            <span className="absolute -top-0.5 -right-0.5 flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary" />
+            </span>
+          </button>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="flex h-9 w-9 items-center justify-center rounded-full bg-muted/50 md:hidden"
@@ -194,6 +211,74 @@ export default function Header() {
           style={{ width: `${scrollProgress * 100}%` }}
         />
       </div>
+
+      {/* Mobile tip modal */}
+      <AnimatePresence>
+        {tipOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setTipOpen(false)}
+              className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm"
+            />
+            {/* Bottom sheet */}
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 100 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className={cn(
+                "fixed bottom-0 left-0 right-0 z-[61] mx-auto max-w-lg",
+                "rounded-t-3xl border-t border-border/30",
+                "bg-background/95 backdrop-blur-xl shadow-2xl shadow-black/20"
+              )}
+            >
+              {/* Handle bar */}
+              <div className="flex justify-center pt-3 pb-2">
+                <div className="h-1 w-10 rounded-full bg-border/50" />
+              </div>
+
+              <div className="px-6 pb-8 pt-2 text-center">
+                {/* Icon */}
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--gradient-from)] to-[var(--gradient-via)] shadow-lg shadow-primary/20">
+                  <Monitor className="h-7 w-7 text-white" />
+                </div>
+
+                {/* Title */}
+                <h3 className="mb-2 text-lg font-bold">
+                  <span className="gradient-text">{tTip("title")}</span>
+                  {" "}
+                  <Sparkles className="inline h-4 w-4 text-primary" />
+                </h3>
+
+                {/* Message */}
+                <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+                  {tTip("message")}
+                </p>
+
+                <p className="mb-5 text-xs font-medium text-primary/70">
+                  {tTip("thanks")}
+                </p>
+
+                {/* Close button */}
+                <button
+                  onClick={() => setTipOpen(false)}
+                  className={cn(
+                    "w-full rounded-xl px-6 py-3 text-sm font-semibold",
+                    "bg-primary text-primary-foreground",
+                    "shadow-lg shadow-primary/25 transition-all active:scale-[0.98]"
+                  )}
+                >
+                  {tTip("close")}
+                </button>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

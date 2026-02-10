@@ -292,6 +292,12 @@
       "tools": "DevOps, testes, deploy e produtividade"
     }
   },
+  "mobile_tip": {
+    "title": "Melhor no Desktop",
+    "message": "Este portfólio foi otimizado para entregar a melhor experiência em cada dispositivo. No desktop, você aproveita efeitos 3D aprimorados, animações interativas e funcionalidades extras. Para a experiência completa, acesse por uma tela maior!",
+    "thanks": "Obrigado pela visita!",
+    "close": "Entendi!"
+  },
   "theme_panel": {
     "title": "Aparência",
     "mode": "Modo",
