@@ -8,7 +8,7 @@ import ThemePanel from "@/components/ui/ThemePanel";
 import LangToggle from "@/components/ui/LangToggle";
 import { cn } from "@/lib/utils";
 
-const navLinks = ["about", "skills", "projects", "experience", "contact"];
+const navLinks = ["about", "experience", "contact"];
 
 export default function Header() {
   const t = useTranslations("nav");

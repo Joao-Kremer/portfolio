@@ -34,6 +34,8 @@ function GalleryOverlay({
 }) {
   const [state, setState] = useState({ index: 0, opacity: 0, progress: 0 });
   const prevSmoothed = useRef(0);
+  const prevIndex = useRef(0);
+  const transitionCooldown = useRef(0);
 
   const update = useCallback(() => {
     const p = progressRef.current ?? 0;
@@ -51,18 +53,31 @@ function GalleryOverlay({
       }
     }
 
-    // Narrative opacity — synced with photo depth-opacity thresholds
-    // PhotoCard: full opacity at dist < 0.07, fades to 0.15 at dist ≈ 0.11
-    let targetOpacity = 0;
-    if (bestDist < 0.07) {
-      targetOpacity = 1.0;
-    } else if (bestDist < 0.11) {
-      targetOpacity = 1.0 - (bestDist - 0.07) / 0.04;
+    // Detect photo switch — brief dip for clear visual feedback
+    if (bestIndex !== prevIndex.current) {
+      prevIndex.current = bestIndex;
+      prevSmoothed.current = 0;
+      transitionCooldown.current = 6; // frames to hold at 0 before fading in
     }
 
-    // Smooth the opacity
-    prevSmoothed.current +=
-      (targetOpacity - prevSmoothed.current) * 0.08;
+    if (transitionCooldown.current > 0) {
+      transitionCooldown.current--;
+      prevSmoothed.current = 0;
+    } else {
+      // Narrative opacity — synced with photo depth-opacity thresholds
+      const halfGap = 0.5 / numPhotos; // half the distance between milestones
+      let targetOpacity = 0;
+      if (bestDist < halfGap * 0.55) {
+        targetOpacity = 1.0;
+      } else if (bestDist < halfGap * 0.9) {
+        targetOpacity = 1.0 - (bestDist - halfGap * 0.55) / (halfGap * 0.35);
+      }
+
+      // Faster smoothing for snappy response
+      prevSmoothed.current +=
+        (targetOpacity - prevSmoothed.current) * 0.18;
+    }
+
     const rounded = Math.round(prevSmoothed.current * 100) / 100;
 
     setState((prev) => {
@@ -221,7 +236,7 @@ export default function PhotoGallery() {
         <div
           ref={scrollContainerRef}
           className="relative"
-          style={{ height: "750vh" }}
+          style={{ height: "1200vh" }}
         >
           <div className="sticky top-0 h-screen w-full">
             {Scene && <Scene items={items} progressRef={progressRef} />}

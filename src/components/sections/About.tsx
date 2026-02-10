@@ -55,6 +55,8 @@ const techStack = {
   database: ["MongoDB", "PostgreSQL"],
 };
 
+const storyChapters = ["bakery", "leap", "first_try", "return", "rise", "destiny", "present"];
+
 /* ───── Component ───── */
 export default function About() {
   const t = useTranslations("about");
@@ -75,17 +77,45 @@ export default function About() {
           <SectionHeading title={t("heading")} subtitle={t("subtitle", { years })} />
         </AnimatedSection>
 
-        {/* Bio */}
+        {/* Bio intro */}
         <AnimatedSection delay={0.15}>
-          <div className="mx-auto max-w-3xl space-y-4 text-center">
-            <p className="text-lg leading-relaxed text-foreground/90 font-medium">
-              {t("bio_intro", { years })}
-            </p>
-            <p className="text-base leading-relaxed text-muted-foreground">
-              {t("bio_detail")}
-            </p>
-          </div>
+          <p className="mx-auto max-w-2xl text-center text-xl leading-relaxed text-foreground/90 font-medium italic">
+            &ldquo;{t("bio_intro")}&rdquo;
+          </p>
         </AnimatedSection>
+
+        {/* Story chapters */}
+        <div className="mx-auto mt-14 max-w-3xl">
+          {storyChapters.map((key, i) => (
+            <AnimatedSection key={key} delay={0.1 * i}>
+              <div className="group relative flex gap-5 pb-10">
+                {/* Timeline */}
+                <div className="flex flex-col items-center">
+                  <div className={cn(
+                    "flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold",
+                    "border-2 border-primary/40 bg-primary/10 text-primary",
+                    "transition-all duration-300 group-hover:border-primary group-hover:bg-primary/20 group-hover:scale-110"
+                  )}>
+                    {i + 1}
+                  </div>
+                  {i < storyChapters.length - 1 && (
+                    <div className="mt-2 w-px flex-1 bg-gradient-to-b from-primary/30 to-transparent" />
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="pb-2 pt-0.5">
+                  <h4 className="text-base font-bold text-foreground tracking-tight sm:text-lg">
+                    {t(`story.${key}.title`)}
+                  </h4>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                    {t(`story.${key}.text`)}
+                  </p>
+                </div>
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
 
         {/* Stats */}
         <AnimatedSection delay={0.3}>

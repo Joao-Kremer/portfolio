@@ -33,8 +33,37 @@
   "about": {
     "heading": "About Me",
     "subtitle": "{years}+ years building solutions that make a difference",
-    "bio_intro": "I'm a Full Stack Developer with {years}+ years of market experience and a track record of above-average results since day one.",
-    "bio_detail": "I started studying programming in October 2023 and within a few months I was already standing out in open source projects and landing my first job. Today I work remotely, provide freelance services, and deliver high-quality projects for clients who demand excellence.",
+    "bio_intro": "My story doesn't start with code. It starts with the courage to change.",
+    "story": {
+      "bakery": {
+        "title": "From the Bakery to Code",
+        "text": "Before writing my first line of code, I already had 5 years of experience — behind a bakery counter. I started young, grew fast, and was promoted to manager of one of the franchises. But something inside me said that wasn't the final destination."
+      },
+      "leap": {
+        "title": "The Leap of Faith",
+        "text": "I quit my stable job and moved to a small town in the countryside of Espírito Santo, Brazil. The plan? Have time to study during the week while working as a freelance waiter on weekends and holidays. No safety net — just determination."
+      },
+      "first_try": {
+        "title": "The First Attempt",
+        "text": "I started studying programming and quit after 1 week. I thought it was too hard for me. So I changed course: I took a flight attendant certification. My dream was to use my languages — fluent English, basic Japanese, and intermediate Italian — to see the world. The dream destination? Dubai, working for Emirates."
+      },
+      "return": {
+        "title": "The Unexpected Return",
+        "text": "Certified and ready to work as a flight attendant, something pulled me back. I decided to give programming one more chance — and this time, I fell in love. I dove in headfirst and never looked back."
+      },
+      "rise": {
+        "title": "From LinkedIn to First Job",
+        "text": "I started sharing my study journey on LinkedIn, helping others who were in the same situation. The posts gained visibility, and within a few months I landed my first fully remote job at a startup."
+      },
+      "destiny": {
+        "title": "Purpose, Not Irony",
+        "text": "Promoted in 6 months. Passed a selection process for Dubai before even completing 11 months of career. The country I always dreamed of working in as a flight attendant — was now my destination as a developer. Irony of fate? I don't think so. I think it was purpose."
+      },
+      "present": {
+        "title": "And Now?",
+        "text": "Here I am today. Continuously evolving and standing out in my field, serving international clients and delivering high-quality projects. Ready to learn and grow even more."
+      }
+    },
     "milestones_title": "Career Milestones",
     "milestones": {
       "opensource": {
@@ -117,19 +146,33 @@
     "subtitle": "My professional journey",
     "present": "Present",
     "items": {
-      "exp-1": {
-        "company": "Dubai Company",
+      "enhance-fitness": {
+        "company": "Enhance Fitness",
         "role": "Full Stack Developer",
-        "period": "2024 - Present",
-        "description": "Developing web solutions for the international market.",
-        "location": "Dubai, UAE (Remote)"
+        "period": "May 2024 - Present",
+        "description": "Building full-stack web solutions for the international market. Migrated a legacy Angular backoffice to React and Next.js with multitenant architecture. Called on-site to Dubai to deliver a critical project in record time.",
+        "location": "Dubai, UAE · Remote"
       },
-      "exp-2": {
-        "company": "Previous Company",
-        "role": "Web Developer",
-        "period": "2023 - 2024",
-        "description": "Career beginnings as a developer.",
-        "location": "Brazil"
+      "dopster-pl": {
+        "company": "Dopster.io",
+        "role": "Front-end & Mobile Developer PL",
+        "period": "Dec 2023 - Apr 2024",
+        "description": "Promoted to mid-level and tech lead in just 6 months. Worked across multiple projects with React, React Native, and Next.js. Responsible for technical decisions and code reviews.",
+        "location": "São Paulo, Brazil · Remote"
+      },
+      "dopster-jr": {
+        "company": "Dopster.io",
+        "role": "Front-end & Mobile Developer JR",
+        "period": "Jun 2023 - Dec 2023",
+        "description": "First job as a developer. Dove headfirst into the modern web ecosystem and within months was delivering complete features with above-average quality.",
+        "location": "São Paulo, Brazil · Remote"
+      },
+      "soujunior": {
+        "company": "SouJunior",
+        "role": "Front-end Developer",
+        "period": "Apr 2023 - Aug 2023",
+        "description": "Open source project where I stood out among developers. My deliveries and LinkedIn posts gained visibility, opening doors to the job market.",
+        "location": "Distrito Federal, Brazil · Remote"
       }
     }
   },

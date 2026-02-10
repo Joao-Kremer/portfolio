@@ -65,7 +65,7 @@ function ImageCard({
       dist < 0.06
         ? 1.0
         : MathUtils.lerp(1.0, 0.7, Math.min(1, (dist - 0.06) / 0.05));
-    prevScale.current += (scaleTarget - prevScale.current) * 0.04;
+    prevScale.current += (scaleTarget - prevScale.current) * 0.1;
     groupRef.current.scale.setScalar(prevScale.current);
 
     // Depth-based opacity: fade out distant photos
@@ -73,7 +73,7 @@ function ImageCard({
       dist < 0.07
         ? 1.0
         : MathUtils.lerp(1.0, 0.15, Math.min(1, (dist - 0.07) / 0.04));
-    prevOpacity.current += (opacityTarget - prevOpacity.current) * 0.05;
+    prevOpacity.current += (opacityTarget - prevOpacity.current) * 0.12;
 
     if (photoRef.current) {
       (photoRef.current.material as { opacity: number }).opacity =
@@ -82,7 +82,7 @@ function ImageCard({
 
     // Glow halo — wider and more dramatic
     const glowTarget = dist < 0.06 ? (1 - dist / 0.06) * 0.5 : 0;
-    prevGlow.current += (glowTarget - prevGlow.current) * 0.04;
+    prevGlow.current += (glowTarget - prevGlow.current) * 0.1;
     if (glowRef.current) {
       (glowRef.current.material as { opacity: number }).opacity =
         prevGlow.current;
@@ -198,7 +198,7 @@ function VideoCard({
       dist < 0.06
         ? 1.0
         : MathUtils.lerp(1.0, 0.7, Math.min(1, (dist - 0.06) / 0.05));
-    prevScale.current += (scaleTarget - prevScale.current) * 0.04;
+    prevScale.current += (scaleTarget - prevScale.current) * 0.1;
     groupRef.current.scale.setScalar(prevScale.current);
 
     // Depth opacity
@@ -206,7 +206,7 @@ function VideoCard({
       dist < 0.07
         ? 1.0
         : MathUtils.lerp(1.0, 0.15, Math.min(1, (dist - 0.07) / 0.04));
-    prevOpacity.current += (opacityTarget - prevOpacity.current) * 0.05;
+    prevOpacity.current += (opacityTarget - prevOpacity.current) * 0.12;
 
     // Auto-play/pause
     const shouldPlay = dist < 0.07;
@@ -222,7 +222,7 @@ function VideoCard({
 
     // Glow
     const glowTarget = dist < 0.06 ? (1 - dist / 0.06) * 0.5 : 0;
-    prevGlow.current += (glowTarget - prevGlow.current) * 0.04;
+    prevGlow.current += (glowTarget - prevGlow.current) * 0.1;
     if (glowRef.current) {
       (glowRef.current.material as { opacity: number }).opacity =
         prevGlow.current;

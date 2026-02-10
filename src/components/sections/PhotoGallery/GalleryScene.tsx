@@ -64,10 +64,10 @@ function CameraRig({ progressRef }: { progressRef: RefObject<number> }) {
     const swayY = Math.cos(elapsed * 0.1) * 0.06;
 
     state.camera.position.x +=
-      (camPos.x + swayX - state.camera.position.x) * 0.05;
+      (camPos.x + swayX - state.camera.position.x) * 0.09;
     state.camera.position.y +=
-      (camPos.y + swayY - state.camera.position.y) * 0.05;
-    state.camera.position.z += (camPos.z - state.camera.position.z) * 0.05;
+      (camPos.y + swayY - state.camera.position.y) * 0.09;
+    state.camera.position.z += (camPos.z - state.camera.position.z) * 0.09;
 
     _lookTarget.set(
       state.camera.position.x * 0.3,

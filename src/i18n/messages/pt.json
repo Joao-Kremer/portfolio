@@ -33,8 +33,37 @@
   "about": {
     "heading": "Sobre Mim",
     "subtitle": "{years}+ anos construindo soluções que fazem a diferença",
-    "bio_intro": "Sou um desenvolvedor Full Stack com {years}+ anos de experiência no mercado e uma trajetória marcada por resultados acima da média desde o primeiro dia.",
-    "bio_detail": "Comecei meus estudos em programação em outubro de 2023 e em poucos meses já estava me destacando em projetos open source e conquistando meu primeiro emprego. Hoje atuo home office, presto serviços freelance e entrego projetos de alta qualidade para clientes que exigem excelência.",
+    "bio_intro": "Minha história não começa com código. Começa com coragem de mudar.",
+    "story": {
+      "bakery": {
+        "title": "Da Padaria ao Código",
+        "text": "Antes de escrever minha primeira linha de código, eu já tinha 5 anos de experiência — atrás de um balcão de padaria. Comecei cedo, cresci rápido e fui promovido a gerente de uma das franquias. Mas algo dentro de mim dizia que aquilo não era o destino final."
+      },
+      "leap": {
+        "title": "O Salto de Fé",
+        "text": "Larguei o emprego estável e fui morar numa cidade pequena do interior do Espírito Santo. O plano? Ter tempo para estudar durante a semana enquanto trabalhava como garçom freelance nos finais de semana e feriados. Não tinha rede de segurança — só determinação."
+      },
+      "first_try": {
+        "title": "A Primeira Tentativa",
+        "text": "Comecei a estudar programação e desisti em 1 semana. Achei que era difícil demais pra mim. Então mudei de rumo: fiz um curso de comissário de voo. Meu sonho era usar meus idiomas — inglês fluente, japonês básico e italiano intermediário — para conhecer o mundo. O destino dos sonhos? Dubai, trabalhando na Emirates."
+      },
+      "return": {
+        "title": "O Retorno Inesperado",
+        "text": "Formado e pronto para atuar como comissário, algo me puxou de volta. Decidi dar mais uma chance à programação — e dessa vez, me apaixonei. Mergulhei de cabeça e não olhei mais para trás."
+      },
+      "rise": {
+        "title": "Do LinkedIn ao Primeiro Emprego",
+        "text": "Comecei a compartilhar minha jornada de estudos no LinkedIn, ajudando outras pessoas que estavam na mesma situação. As postagens ganharam visibilidade, e em poucos meses conquistei meu primeiro emprego remoto em uma startup."
+      },
+      "destiny": {
+        "title": "Propósito, Não Ironia",
+        "text": "Promoção em 6 meses. Processo seletivo para Dubai antes de completar 11 meses de carreira. O país que eu sempre sonhei conhecer a trabalho quando queria ser comissário — agora era meu destino como desenvolvedor. Ironia do destino? Acho que não. Acho que era propósito."
+      },
+      "present": {
+        "title": "E Agora?",
+        "text": "Hoje estou aqui. Sigo evoluindo e crescendo com destaque na minha área, atendendo clientes internacionais e entregando projetos de alta qualidade. Pronto para aprender e evoluir cada vez mais."
+      }
+    },
     "milestones_title": "Marcos da Carreira",
     "milestones": {
       "opensource": {
@@ -117,19 +146,33 @@
     "subtitle": "Minha trajetória profissional",
     "present": "Presente",
     "items": {
-      "exp-1": {
-        "company": "Empresa em Dubai",
-        "role": "Full Stack Developer",
-        "period": "2024 - Presente",
-        "description": "Desenvolvimento de soluções web para o mercado internacional.",
-        "location": "Dubai, UAE (Remoto)"
+      "enhance-fitness": {
+        "company": "Enhance Fitness",
+        "role": "Desenvolvedor Full Stack",
+        "period": "Mai 2024 - Presente",
+        "description": "Desenvolvimento de soluções web completas para o mercado internacional. Migração de backoffice legado em Angular para React e Next.js com arquitetura multitenant. Convocado para missão presencial em Dubai para entregar projeto crítico em tempo recorde.",
+        "location": "Dubai, Emirados Árabes · Remoto"
       },
-      "exp-2": {
-        "company": "Empresa Anterior",
-        "role": "Desenvolvedor Web",
-        "period": "2023 - 2024",
-        "description": "Início da carreira como desenvolvedor.",
-        "location": "Brasil"
+      "dopster-pl": {
+        "company": "Dopster.io",
+        "role": "Desenvolvedor Front-end & Mobile PL",
+        "period": "Dez 2023 - Abr 2024",
+        "description": "Promovido a pleno e líder técnico em apenas 6 meses. Atuação em múltiplos projetos com React, React Native e Next.js. Responsável por decisões técnicas e code reviews do time.",
+        "location": "São Paulo, Brasil · Remoto"
+      },
+      "dopster-jr": {
+        "company": "Dopster.io",
+        "role": "Desenvolvedor Front-end & Mobile JR",
+        "period": "Jun 2023 - Dez 2023",
+        "description": "Primeiro emprego como desenvolvedor. Mergulhei de cabeça no ecossistema web moderno e em poucos meses já entregava features completas com qualidade acima da média.",
+        "location": "São Paulo, Brasil · Remoto"
+      },
+      "soujunior": {
+        "company": "SouJunior",
+        "role": "Desenvolvedor Front-end",
+        "period": "Abr 2023 - Ago 2023",
+        "description": "Projeto open source onde me destaquei entre os programadores. Minhas entregas e postagens no LinkedIn ganharam visibilidade, abrindo portas para o mercado de trabalho.",
+        "location": "Distrito Federal, Brasil · Remoto"
       }
     }
   },
