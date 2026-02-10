@@ -25,14 +25,16 @@ export default function MilestoneMarker({
   const [opacity, setOpacity] = useState(0);
   const prevOpacity = useRef(0);
 
-  const isLeft = index % 2 === 0;
+  // Place card towards center: if waypoint is on the left, card goes right (and vice versa)
+  const isWaypointLeft = WAYPOINTS[index].x < 0;
+  const cardOnRight = isWaypointLeft;
 
-  // Position: at the waypoint, offset laterally (less on mobile)
+  // Position: at the waypoint, offset towards center
   const position = useMemo(() => {
     const basePos = WAYPOINTS[index].clone();
-    const offset = isLeft ? (compact ? -1.5 : -3) : (compact ? 1.5 : 3);
+    const offset = cardOnRight ? (compact ? 1.5 : 3) : (compact ? -1.5 : -3);
     return new Vector3(basePos.x + offset, basePos.y + 0.5, basePos.z);
-  }, [index, isLeft, compact]);
+  }, [index, cardOnRight, compact]);
 
   // The progress value when the airplane reaches this milestone
   const milestoneT = useMemo(() => {
@@ -92,7 +94,7 @@ export default function MilestoneMarker({
         <div
           className={`rounded-2xl border border-border/50 bg-card/95 shadow-lg shadow-primary/10 backdrop-blur-md ${
             compact ? "p-3" : "p-5"
-          } ${isLeft ? "text-right" : "text-left"}`}
+          } ${cardOnRight ? "text-left" : "text-right"}`}
         >
           <span className={`inline-block rounded-full bg-primary/10 font-semibold text-primary ${
             compact ? "px-2 py-0.5 text-xs" : "px-3 py-1 text-sm"
