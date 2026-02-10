@@ -49,11 +49,54 @@ function AnimatedCounter({ value, suffix = "", duration = 2 }: { value: number; 
 }
 
 /* ───── Tech stack ───── */
-const techStack = {
-  frontend: ["React", "Next.js", "Angular", "React Native", "TypeScript"],
-  backend: ["Node.js", "NestJS", "JavaScript", "TypeScript"],
-  database: ["MongoDB", "PostgreSQL"],
-};
+const techCategories = [
+  {
+    key: "frontend",
+    span: "sm:col-span-2 lg:col-span-3",
+    items: [
+      "React", "Next.js", "Angular", "TypeScript", "JavaScript",
+      "Tailwind CSS", "MUI", "Ant Design", "Radix UI", "shadcn/ui",
+      "Styled Components", "Sass/SCSS", "Zustand", "Redux", "React Query",
+      "React Hook Form", "Zod", "Framer Motion", "Three.js", "Storybook",
+      "Next Auth", "i18next", "Vite", "Webpack", "RxJS",
+    ],
+  },
+  {
+    key: "mobile",
+    span: "",
+    items: [
+      "React Native", "Expo", "Nativewind", "React Navigation",
+      "AsyncStorage", "Push Notifications", "Deep Linking",
+    ],
+  },
+  {
+    key: "backend",
+    span: "",
+    items: [
+      "Node.js", "NestJS", "Express", "Fastify", "REST APIs", "GraphQL",
+      "Swagger/OpenAPI", "Socket.io", "JWT Auth", "OAuth 2.0",
+      "Webhooks", "Microservices",
+    ],
+  },
+  {
+    key: "database",
+    span: "",
+    items: [
+      "PostgreSQL", "MySQL", "MongoDB", "SQLite", "Redis",
+      "Prisma", "TypeORM", "Firebase", "Supabase",
+    ],
+  },
+  {
+    key: "tools",
+    span: "sm:col-span-2 lg:col-span-3",
+    items: [
+      "Git", "Docker", "AWS", "S3", "Vercel", "Netlify",
+      "GitHub Actions", "CI/CD", "Turborepo", "pnpm",
+      "Jest", "Cypress", "Datadog", "Jira", "Postman",
+      "Figma", "Linux", "Nginx",
+    ],
+  },
+];
 
 const storyChapters = ["bakery", "leap", "first_try", "return", "rise", "destiny", "present"];
 
@@ -64,8 +107,8 @@ export default function About() {
 
   const stats = [
     { key: "experience", value: years, suffix: "+", icon: Briefcase },
-    { key: "projects", value: 10, suffix: "+", icon: FolderOpen },
-    { key: "technologies", value: 20, suffix: "+", icon: Code2 },
+    { key: "projects", value: 30, suffix: "+", icon: FolderOpen },
+    { key: "technologies", value: 50, suffix: "+", icon: Code2 },
     { key: "countries", value: 3, suffix: "+", icon: Globe },
   ];
 
@@ -155,24 +198,25 @@ export default function About() {
               <span className="gradient-text">{t("tech_title")}</span>
             </h3>
 
-            <div className="grid gap-6 sm:grid-cols-3">
-              {(Object.keys(techStack) as (keyof typeof techStack)[]).map((category, ci) => (
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {techCategories.map(({ key, span, items }, ci) => (
                 <motion.div
-                  key={category}
+                  key={key}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.5, delay: ci * 0.12 }}
                   className={cn(
                     "rounded-2xl border border-border/50 bg-card/50 p-5",
-                    "transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
+                    "transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5",
+                    span
                   )}
                 >
                   <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-primary">
-                    {t(`tech.${category}`)}
+                    {t(`tech.${key}`)}
                   </h4>
                   <div className="flex flex-wrap gap-2">
-                    {techStack[category].map((tech, ti) => (
+                    {items.map((tech, ti) => (
                       <motion.span
                         key={tech}
                         initial={{ opacity: 0, scale: 0.8 }}

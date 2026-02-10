@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { Monitor, Server, Database as DatabaseIcon, Wrench } from "lucide-react";
+import { Monitor, Server, Database as DatabaseIcon, Wrench, Smartphone } from "lucide-react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { skills } from "@/data/skills";
@@ -10,8 +10,9 @@ import { cn } from "@/lib/utils";
 
 const categories = [
   { key: "frontend" as const, icon: Monitor, span: "sm:col-span-2 lg:col-span-2" },
+  { key: "mobile" as const, icon: Smartphone, span: "" },
   { key: "backend" as const, icon: Server, span: "" },
-  { key: "database" as const, icon: DatabaseIcon, span: "" },
+  { key: "database" as const, icon: DatabaseIcon, span: "sm:col-span-2 lg:col-span-1" },
   { key: "tools" as const, icon: Wrench, span: "sm:col-span-2 lg:col-span-2" },
 ];
 

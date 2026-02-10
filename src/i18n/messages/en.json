@@ -106,8 +106,10 @@
     "tech_title": "Main Stack",
     "tech": {
       "frontend": "Frontend",
+      "mobile": "Mobile",
       "backend": "Backend",
-      "database": "Database"
+      "database": "Database",
+      "tools": "Tools & DevOps"
     }
   },
   "skills": {
@@ -115,6 +117,7 @@
     "subtitle": "Tools and technologies I use daily",
     "categories": {
       "frontend": "Frontend",
+      "mobile": "Mobile",
       "backend": "Backend",
       "tools": "Tools & DevOps",
       "database": "Database"

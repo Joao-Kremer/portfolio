@@ -1,37 +1,89 @@
 export type Skill = {
   name: string;
-  category: "frontend" | "backend" | "tools" | "database";
+  category: "frontend" | "backend" | "tools" | "database" | "mobile";
 };
 
 export const skills: Skill[] = [
   // Frontend
   { name: "React", category: "frontend" },
   { name: "Next.js", category: "frontend" },
+  { name: "Angular", category: "frontend" },
   { name: "TypeScript", category: "frontend" },
   { name: "JavaScript", category: "frontend" },
   { name: "Tailwind CSS", category: "frontend" },
+  { name: "MUI", category: "frontend" },
+  { name: "Ant Design", category: "frontend" },
+  { name: "Radix UI", category: "frontend" },
+  { name: "shadcn/ui", category: "frontend" },
+  { name: "Styled Components", category: "frontend" },
+  { name: "Sass/SCSS", category: "frontend" },
   { name: "HTML5", category: "frontend" },
   { name: "CSS3", category: "frontend" },
+  { name: "Zustand", category: "frontend" },
+  { name: "Redux", category: "frontend" },
+  { name: "React Query", category: "frontend" },
+  { name: "React Hook Form", category: "frontend" },
+  { name: "Zod", category: "frontend" },
   { name: "Framer Motion", category: "frontend" },
+  { name: "Three.js", category: "frontend" },
+  { name: "Storybook", category: "frontend" },
+  { name: "Next Auth", category: "frontend" },
+  { name: "i18next", category: "frontend" },
+  { name: "Vite", category: "frontend" },
+  { name: "Webpack", category: "frontend" },
+  { name: "RxJS", category: "frontend" },
+
+  // Mobile
+  { name: "React Native", category: "mobile" },
+  { name: "Expo", category: "mobile" },
+  { name: "Nativewind", category: "mobile" },
+  { name: "React Navigation", category: "mobile" },
+  { name: "AsyncStorage", category: "mobile" },
+  { name: "Push Notifications", category: "mobile" },
+  { name: "Deep Linking", category: "mobile" },
 
   // Backend
   { name: "Node.js", category: "backend" },
-  { name: "Express", category: "backend" },
   { name: "NestJS", category: "backend" },
+  { name: "Express", category: "backend" },
+  { name: "Fastify", category: "backend" },
   { name: "REST APIs", category: "backend" },
   { name: "GraphQL", category: "backend" },
+  { name: "Swagger/OpenAPI", category: "backend" },
+  { name: "Socket.io", category: "backend" },
+  { name: "JWT Auth", category: "backend" },
+  { name: "OAuth 2.0", category: "backend" },
+  { name: "Webhooks", category: "backend" },
+  { name: "Microservices", category: "backend" },
 
   // Database
   { name: "PostgreSQL", category: "database" },
+  { name: "MySQL", category: "database" },
   { name: "MongoDB", category: "database" },
+  { name: "SQLite", category: "database" },
   { name: "Redis", category: "database" },
   { name: "Prisma", category: "database" },
+  { name: "TypeORM", category: "database" },
+  { name: "Firebase", category: "database" },
+  { name: "Supabase", category: "database" },
 
-  // Tools
+  // Tools & DevOps
   { name: "Git", category: "tools" },
   { name: "Docker", category: "tools" },
   { name: "AWS", category: "tools" },
+  { name: "S3", category: "tools" },
   { name: "Vercel", category: "tools" },
+  { name: "Netlify", category: "tools" },
   { name: "GitHub Actions", category: "tools" },
+  { name: "CI/CD", category: "tools" },
+  { name: "Turborepo", category: "tools" },
+  { name: "pnpm", category: "tools" },
+  { name: "Jest", category: "tools" },
+  { name: "Cypress", category: "tools" },
+  { name: "Datadog", category: "tools" },
+  { name: "Jira", category: "tools" },
+  { name: "Postman", category: "tools" },
   { name: "Figma", category: "tools" },
+  { name: "Linux", category: "tools" },
+  { name: "Nginx", category: "tools" },
 ];

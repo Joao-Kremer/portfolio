@@ -106,8 +106,10 @@
     "tech_title": "Stack Principal",
     "tech": {
       "frontend": "Frontend",
+      "mobile": "Mobile",
       "backend": "Backend",
-      "database": "Banco de Dados"
+      "database": "Banco de Dados",
+      "tools": "Ferramentas & DevOps"
     }
   },
   "skills": {
@@ -115,6 +117,7 @@
     "subtitle": "Ferramentas e tecnologias que utilizo no dia a dia",
     "categories": {
       "frontend": "Frontend",
+      "mobile": "Mobile",
       "backend": "Backend",
       "tools": "Ferramentas & DevOps",
       "database": "Banco de Dados"
