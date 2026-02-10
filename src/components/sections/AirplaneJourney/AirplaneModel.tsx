@@ -74,6 +74,8 @@ export default function AirplaneModel({
 }: Props) {
   const meshRef = useRef<Mesh>(null);
   const smoothProgress = useRef(progress.current ?? 0);
+  const prevT = useRef(smoothProgress.current);
+  const direction = useRef(1);
   const isFirstFrame = useRef(true);
   const { curve } = useFlightCurve();
   const geometry = useMemo(() => createPaperAirplaneGeometry(), []);
@@ -98,12 +100,20 @@ export default function AirplaneModel({
     }
     const t = Math.max(0.001, Math.min(0.999, smoothProgress.current));
 
+    // Track scroll direction
+    const delta = t - prevT.current;
+    if (Math.abs(delta) > 0.0001) {
+      direction.current += ((delta < 0 ? -1 : 1) - direction.current) * 0.08;
+    }
+    prevT.current = t;
+
     // Position on curve
     const pos = curve.getPointAt(t);
     meshRef.current.position.copy(pos);
 
-    // Tangent for orientation
+    // Tangent for orientation — flip when scrolling backwards
     const tangent = curve.getTangentAt(t);
+    if (direction.current < 0) tangent.negate();
 
     // Look along tangent
     const lookTarget = pos.clone().add(tangent);
