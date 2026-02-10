@@ -30,6 +30,46 @@ export default function Header() {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const [tipOpen, setTipOpen] = useState(false);
 
+  // Console Easter egg — runs once
+  useEffect(() => {
+    console.log(
+      `%c
+     ╔══════════════════════════════════════════╗
+     ║                                          ║
+     ║          👀  Hey, developer!              ║
+     ║                                          ║
+     ╚══════════════════════════════════════════╝`,
+      "color: #ff6b35; font-family: monospace; font-size: 12px; font-weight: bold;"
+    );
+    console.log(
+      "%c I see you poking around the code... I like that! 🔍",
+      "color: #4ecdc4; font-size: 14px; font-weight: bold; padding: 4px 0;"
+    );
+    console.log(
+      "%c This portfolio was built with Next.js, Three.js, Framer Motion & a lot of ☕",
+      "color: #a0a0a0; font-size: 12px; padding: 2px 0;"
+    );
+    console.log(
+      "%c ─────────────────────────────────────────────",
+      "color: #333;"
+    );
+    console.log(
+      "%c 🚀 Looking for a Full Stack Developer?",
+      "color: #ff6b35; font-size: 16px; font-weight: bold; padding: 4px 0;"
+    );
+    console.log(
+      "%c Let's build something amazing together!\n\n" +
+      "   📧 joaokremer.developer@gmail.com\n" +
+      "   💼 linkedin.com/in/joaokremer\n" +
+      "   🐙 github.com/Joao-Kremer\n",
+      "color: #e0e0e0; font-size: 12px; line-height: 1.8;"
+    );
+    console.log(
+      "%c ✨ Obrigado pela visita! | Thanks for visiting! ✨",
+      "background: linear-gradient(90deg, #ff6b35, #4ecdc4); color: #fff; font-size: 13px; font-weight: bold; padding: 8px 16px; border-radius: 6px;"
+    );
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
