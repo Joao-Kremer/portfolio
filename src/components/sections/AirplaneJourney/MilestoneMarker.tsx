@@ -102,11 +102,11 @@ export default function MilestoneMarker({
           <h4 className={`font-bold text-foreground ${compact ? "mt-1 text-sm" : "mt-2 text-base"}`}>
             {milestone.title}
           </h4>
-          {!compact && (
-            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-              {milestone.description}
-            </p>
-          )}
+          <p className={`leading-relaxed text-muted-foreground ${
+            compact ? "mt-0.5 text-[11px] line-clamp-3" : "mt-1 text-sm"
+          }`}>
+            {milestone.description}
+          </p>
         </div>
       </Html>
     </group>
