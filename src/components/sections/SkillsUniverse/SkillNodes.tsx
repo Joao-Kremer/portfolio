@@ -9,6 +9,7 @@ import {
   getSkillAngle,
   getCategoryFocus,
   getCategoryColor,
+  getActiveCategoryIndex,
 } from "./orbitalMath";
 
 type Props = {
@@ -54,6 +55,7 @@ export default function SkillNodes({ colors, progressRef }: Props) {
   }, [colors]);
 
   const tempColor = useMemo(() => new Color(), []);
+  const whiteColor = useMemo(() => new Color("#ffffff"), []);
 
   useFrame(({ clock }) => {
     if (!meshRef.current) return;
@@ -67,20 +69,32 @@ export default function SkillNodes({ colors, progressRef }: Props) {
       const angle = getSkillAngle(angleIndex, totalInRing, elapsed * rotSpeed);
       getNodePosition(radius, tiltRad, angle, tempPos);
 
-      // Scale: bigger when in focus
+      // Focus: how much this ring is active (0–1)
       const focus = getCategoryFocus(progress, ringIndex);
+      // Is ANY ring active? If so, dim non-focused rings
+      const anyActive = getActiveCategoryIndex(progress) >= 0;
+      const dimmed = anyActive && focus === 0;
+
+      // Scale: bigger when focused, smaller when dimmed
       const baseSize = 0.18;
-      const focusScale = 1 + focus * 0.8;
+      const focusScale = dimmed ? 0.6 : 1 + focus * 1.0;
 
       dummy.position.copy(tempPos);
       dummy.scale.setScalar(baseSize * focusScale);
       dummy.updateMatrix();
       meshRef.current.setMatrixAt(i, dummy.matrix);
 
-      // Color with brightness boost on focus
-      tempColor.copy(colorCache[ringIndex]);
+      // Color: active ring glows bright, others get dimmed
       if (focus > 0) {
-        tempColor.lerp(new Color("#ffffff"), focus * 0.3);
+        // Lerp from category color → bright white/primary
+        tempColor.copy(colorCache[ringIndex]);
+        tempColor.lerp(whiteColor, focus * 0.5);
+      } else if (dimmed) {
+        // Dim to dark gray
+        tempColor.set("#333333");
+        tempColor.lerp(colorCache[ringIndex], 0.2);
+      } else {
+        tempColor.copy(colorCache[ringIndex]);
       }
       meshRef.current.setColorAt(i, tempColor);
     }

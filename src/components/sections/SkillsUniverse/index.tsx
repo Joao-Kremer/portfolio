@@ -234,7 +234,7 @@ export default function SkillsUniverse() {
         <div
           ref={scrollContainerRef}
           className="relative"
-          style={{ height: "350vh" }}
+          style={{ height: "700vh" }}
         >
           <div className="sticky top-0 h-screen w-full">
             {Scene && <Scene progressRef={progressRef} />}

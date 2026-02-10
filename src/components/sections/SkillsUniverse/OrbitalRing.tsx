@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { Line } from "@react-three/drei";
 import { Vector3 } from "three";
 import type { ThemeColors } from "@/components/sections/AirplaneJourney/useCSSVariables";
-import { type RingConfig, getRingPoints, getCategoryFocus, getCategoryColor } from "./orbitalMath";
+import { type RingConfig, getRingPoints, getCategoryFocus, getCategoryColor, getActiveCategoryIndex } from "./orbitalMath";
 
 type Props = {
   config: RingConfig;
@@ -14,7 +14,8 @@ type Props = {
 
 export default function OrbitalRing({ config, ringIndex, colors, progressRef }: Props) {
   const opacityRef = useRef(0.12);
-  const lineRef = useRef<{ material: { opacity: number } }>(null);
+  const widthRef = useRef(1.2);
+  const lineRef = useRef<{ material: { opacity: number; linewidth?: number } }>(null);
   const connRef = useRef<{ material: { opacity: number } }>(null);
 
   const ringPoints = useMemo(
@@ -35,14 +36,18 @@ export default function OrbitalRing({ config, ringIndex, colors, progressRef }: 
   useFrame(() => {
     const progress = progressRef.current ?? 0;
     const focus = getCategoryFocus(progress, ringIndex);
-    const targetOpacity = 0.1 + focus * 0.5;
+    const anyActive = getActiveCategoryIndex(progress) >= 0;
+    const dimmed = anyActive && focus === 0;
+
+    // Active ring: bright. Dimmed: very faint. Default: subtle
+    const targetOpacity = dimmed ? 0.04 : 0.1 + focus * 0.6;
     opacityRef.current += (targetOpacity - opacityRef.current) * 0.08;
 
     if (lineRef.current) {
       lineRef.current.material.opacity = opacityRef.current;
     }
     if (connRef.current) {
-      connRef.current.material.opacity = opacityRef.current * 0.4;
+      connRef.current.material.opacity = dimmed ? 0.01 : opacityRef.current * 0.4;
     }
   });
 
