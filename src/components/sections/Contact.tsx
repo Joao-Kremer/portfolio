@@ -22,13 +22,13 @@ const socials = [
   {
     key: "linkedin",
     icon: Linkedin,
-    href: "https://linkedin.com/in/joaokremer",
+    href: "https://www.linkedin.com/in/joaokremer/",
     label: "LinkedIn",
   },
   {
     key: "email",
     icon: Mail,
-    href: "mailto:joao@enhancefitness.com",
+    href: "mailto:joaokremer.developer@gmail.com",
     label: "E-mail",
   },
 ];
@@ -75,7 +75,7 @@ export default function Contact() {
 
             {/* Email - secondary */}
             <motion.a
-              href="mailto:joao@enhancefitness.com"
+              href="mailto:joaokremer.developer@gmail.com"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               className={cn(

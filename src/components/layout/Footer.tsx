@@ -7,8 +7,8 @@ const navLinks = ["about", "skills", "experience", "contact"];
 
 const socials = [
   { icon: Github, href: "https://github.com/Joao-Kremer", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com/in/joaokremer", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:joao@enhancefitness.com", label: "Email" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/joaokremer/", label: "LinkedIn" },
+  { icon: Mail, href: "mailto:joaokremer.developer@gmail.com", label: "Email" },
 ];
 
 export default function Footer() {

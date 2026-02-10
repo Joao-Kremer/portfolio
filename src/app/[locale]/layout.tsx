@@ -61,7 +61,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     url: "https://joaokremer.dev",
     sameAs: [
       "https://github.com/Joao-Kremer",
-      "https://linkedin.com/in/joaokremer",
+      "https://www.linkedin.com/in/joaokremer/",
     ],
   };
 
