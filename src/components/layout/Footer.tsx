@@ -3,12 +3,12 @@
 import { useTranslations } from "next-intl";
 import { Github, Linkedin, Mail } from "lucide-react";
 
-const navLinks = ["about", "skills", "projects", "experience", "contact"];
+const navLinks = ["about", "skills", "experience", "contact"];
 
 const socials = [
-  { icon: Github, href: "https://github.com/yourusername", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com/in/yourusername", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:your@email.com", label: "Email" },
+  { icon: Github, href: "https://github.com/Joao-Kremer", label: "GitHub" },
+  { icon: Linkedin, href: "https://linkedin.com/in/joaokremer", label: "LinkedIn" },
+  { icon: Mail, href: "mailto:joao@enhancefitness.com", label: "Email" },
 ];
 
 export default function Footer() {

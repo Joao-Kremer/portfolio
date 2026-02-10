@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { ArrowDown, Eye } from "lucide-react";
+import { ArrowDown, Plane } from "lucide-react";
 import { cn } from "@/lib/utils";
 import HeroGlobe from "@/components/sections/HeroGlobe";
 
@@ -90,7 +90,7 @@ export default function Hero() {
           className="flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <button
-            onClick={() => scrollTo("video")}
+            onClick={() => scrollTo("airplane-journey")}
             className={cn(
               "group relative flex items-center gap-2 rounded-full px-6 py-3",
               "bg-primary text-primary-foreground font-medium",
@@ -100,19 +100,9 @@ export default function Hero() {
           >
             <span className="absolute -inset-[2px] rounded-full bg-gradient-to-r from-[var(--gradient-from)] via-[var(--gradient-via)] to-[var(--gradient-to)] opacity-0 blur-md transition-opacity duration-500 group-hover:opacity-60" />
             <span className="relative flex items-center gap-2">
-              <Eye className="h-4 w-4" />
+              <Plane className="h-4 w-4" />
               {t("cta_story")}
             </span>
-          </button>
-          <button
-            onClick={() => scrollTo("projects")}
-            className={cn(
-              "flex items-center gap-2 rounded-full px-6 py-3",
-              "border border-border font-medium",
-              "transition-all duration-300 hover:bg-muted/50 hover:scale-105"
-            )}
-          >
-            {t("cta_projects")}
           </button>
         </motion.div>
       </motion.div>

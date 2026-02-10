@@ -60,8 +60,8 @@ export default async function LocaleLayout({ children, params }: Props) {
     jobTitle: "Full Stack Developer",
     url: "https://joaokremer.dev",
     sameAs: [
-      "https://github.com/yourusername",
-      "https://linkedin.com/in/yourusername",
+      "https://github.com/Joao-Kremer",
+      "https://linkedin.com/in/joaokremer",
     ],
   };
 
