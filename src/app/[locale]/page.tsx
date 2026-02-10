@@ -1,7 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import Hero from "@/components/sections/Hero";
 import VideoIntro from "@/components/sections/VideoIntro";
-import PhotoGallery from "@/components/sections/PhotoGallery";
 import About from "@/components/sections/About";
 import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
@@ -25,8 +24,6 @@ export default async function HomePage({ params }: Props) {
       <AirplaneJourney />
       <SectionDivider />
       <VideoIntro />
-      <SectionDivider />
-      <PhotoGallery />
       <SectionDivider />
       <About />
       <SectionDivider />
